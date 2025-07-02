@@ -1,8 +1,10 @@
 export async function handleApiCall<T>(
   apiCall: () => Promise<{ status: number; data: T }>,
-  operation: string
+  operation: string,
+  setLoading?: (loading: boolean) => void
 ): Promise<T> {
   try {
+    setLoading?.(true);
     const response = await apiCall();
 
     if (response.status < 200 || response.status >= 300) {
@@ -17,5 +19,7 @@ export async function handleApiCall<T>(
         error instanceof Error ? error.message : "Unknown error"
       }`
     );
+  } finally {
+    setLoading?.(false);
   }
 }

@@ -1,21 +1,23 @@
 import { useMemo, type FC, type ReactNode } from "react";
-import { GitHubProvider } from "../../providers/GitHubProvider";
+import { GitHubClient } from "../../providers/GitHubClient";
 import { OrganizationService } from "../../services/organization/OrganizationService";
 import { ServiceContext } from "./useService";
 import { RepositoryService } from "../../services/repository/RepositoryService";
+import { DummyProvider } from "../../providers/DummyProvider";
 
 interface ServicesProviderProps {
   children: ReactNode;
 }
 
 export const ServicesProvider: FC<ServicesProviderProps> = ({ children }) => {
-  const services = useMemo(
-    () => ({
-      organizationService: new OrganizationService(new GitHubProvider()),
-      repositoryService: new RepositoryService(new GitHubProvider()),
-    }),
-    []
-  );
+  const services = useMemo(() => {
+    const isDev = process.env.NODE_ENV === "dev";
+    const provider = isDev ? new DummyProvider() : new GitHubClient();
+    return {
+      organizationService: new OrganizationService(provider),
+      repositoryService: new RepositoryService(provider),
+    };
+  }, []);
 
   return (
     <ServiceContext.Provider value={services}>

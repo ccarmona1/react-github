@@ -47,25 +47,39 @@ export const RepositoryList: FC = () => {
   }
 
   return (
-    <div>
-      <h2>Repositories</h2>
-      <RepositoryListSearchBar
-        onSearchChange={handleSearchChange}
-        searchTerms={searchTerms}
-      ></RepositoryListSearchBar>
+    <div className="bg-white shadow-sm rounded-lg p-6">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-xl font-semibold text-gray-900">Repositories</h2>
+        <div className="text-sm text-gray-500">
+          {repositories.length} repositories found
+        </div>
+      </div>
+
+      <div className="mb-6">
+        <RepositoryListSearchBar
+          onSearchChange={handleSearchChange}
+          searchTerms={searchTerms}
+        />
+      </div>
+
       {repositories.length > 0 ? (
-        <ul>
+        <div className="grid gap-4">
           {repositories.map((repository: Repository) => (
-            <li key={repository.id}>
+            <div
+              key={repository.id}
+              className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+            >
               <RepositoryLink
                 organizationName={organizationName}
                 repository={repository}
-              ></RepositoryLink>
-            </li>
+              />
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
-        <div>No repositories found.</div>
+        <div className="text-center py-8">
+          <div className="text-gray-500">No repositories found.</div>
+        </div>
       )}
     </div>
   );

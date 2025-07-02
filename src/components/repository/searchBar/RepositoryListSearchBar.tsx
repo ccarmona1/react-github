@@ -18,69 +18,100 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
         parsedValue = Number(value);
       }
       onSearchChange({ ...searchTerms, [name]: parsedValue });
-      console.log("hi");
     },
     [onSearchChange, searchTerms]
   );
 
   return (
-    <>
-      <label htmlFor="type-select" className="mr-2">
-        Type
-      </label>
-      <select
-        id="type-select"
-        name="type"
-        aria-label="type"
-        value={searchTerms?.type || ""}
-        onChange={handleSearchChange}
-      >
-        <option value="">all</option>
-        <option value="public">public</option>
-        <option value="private">private</option>
-        <option value="forks">forks</option>
-        <option value="sources">sources</option>
-        <option value="member">member</option>
-      </select>
-      <label htmlFor="sort-select" className="ml-4 mr-2">
-        Sort
-      </label>
-      <select
-        id="sort-select"
-        name="sort"
-        aria-label="sort"
-        value={searchTerms?.sort || ""}
-        onChange={handleSearchChange}
-      >
-        <option value="">created</option>
-        <option value="updated">updated</option>
-        <option value="pushed">pushed</option>
-        <option value="full_name">full_name</option>
-      </select>
-      <label htmlFor="per-page-input" className="ml-4 mr-2">
-        Per page
-      </label>
-      <input
-        id="per-page-input"
-        name="per_page"
-        type="number"
-        min={1}
-        aria-label="per_page"
-        value={searchTerms?.per_page}
-        onChange={handleSearchChange}
-      />
-      <label htmlFor="page-input" className="ml-4 mr-2">
-        Page
-      </label>
-      <input
-        id="page-input"
-        name="page"
-        type="number"
-        min={1}
-        aria-label="page"
-        value={searchTerms?.page}
-        onChange={handleSearchChange}
-      />
-    </>
+    <div className="bg-gray-50 rounded-lg p-4">
+      <h3 className="text-sm font-medium text-gray-900 mb-3">
+        Filter repositories
+      </h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div>
+          <label
+            htmlFor="type-select"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Type
+          </label>
+          <select
+            id="type-select"
+            name="type"
+            aria-label="type"
+            value={searchTerms?.type || ""}
+            onChange={handleSearchChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          >
+            <option value="">all</option>
+            <option value="public">public</option>
+            <option value="private">private</option>
+            <option value="forks">forks</option>
+            <option value="sources">sources</option>
+            <option value="member">member</option>
+          </select>
+        </div>
+
+        <div>
+          <label
+            htmlFor="sort-select"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Sort by
+          </label>
+          <select
+            id="sort-select"
+            name="sort"
+            aria-label="sort"
+            value={searchTerms?.sort || ""}
+            onChange={handleSearchChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          >
+            <option value="">created</option>
+            <option value="updated">updated</option>
+            <option value="pushed">pushed</option>
+            <option value="full_name">full_name</option>
+          </select>
+        </div>
+
+        <div>
+          <label
+            htmlFor="per-page-input"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Per page
+          </label>
+          <input
+            id="per-page-input"
+            name="per_page"
+            type="number"
+            min={1}
+            aria-label="per_page"
+            value={searchTerms?.per_page}
+            onChange={handleSearchChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+
+        <div>
+          <label
+            htmlFor="page-input"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Page
+          </label>
+          <input
+            id="page-input"
+            name="page"
+            type="number"
+            min={1}
+            aria-label="page"
+            value={searchTerms?.page}
+            onChange={handleSearchChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+      </div>
+    </div>
   );
 };

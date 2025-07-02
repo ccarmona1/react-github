@@ -1,10 +1,10 @@
-import type { VersionControlProvider } from "../../providers/VersionControlProvider";
+import type { VersionControlClient } from "../../providers/VersionControlClient";
 import type { Organization } from "../../types/Organization";
 
 export class OrganizationService {
-  private versionControlProvider: VersionControlProvider;
+  private versionControlProvider: VersionControlClient;
 
-  constructor(repositoryProvider: VersionControlProvider) {
+  constructor(repositoryProvider: VersionControlClient) {
     this.versionControlProvider = repositoryProvider;
   }
 

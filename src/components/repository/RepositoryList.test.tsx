@@ -4,7 +4,7 @@ import { RepositoryList } from "./RepositoryList";
 import * as useServiceModule from "../../hooks/organization/useService";
 import { RepositoryService } from "../../services/repository/RepositoryService";
 import { OrganizationService } from "../../services/organization/OrganizationService";
-import type { VersionControlProvider } from "../../providers/VersionControlProvider";
+import type { VersionControlClient } from "../../providers/VersionControlClient";
 
 describe("RepositoryList", () => {
   afterEach(jest.clearAllMocks);
@@ -14,13 +14,13 @@ describe("RepositoryList", () => {
     { id: 2, name: "repo2", full_name: "org/repo2" },
   ];
 
-  const createMockVersionControlProvider = (): VersionControlProvider => ({
+  const createMockVersionControlProvider = (): VersionControlClient => ({
     getOrganization: jest.fn(),
     getRepositories: jest.fn().mockResolvedValue(mockRepositories),
     getRepository: jest.fn(),
   });
 
-  const getServices = (provider?: VersionControlProvider) => {
+  const getServices = (provider?: VersionControlClient) => {
     const vcp = provider || createMockVersionControlProvider();
     return {
       repositoryService: new RepositoryService(vcp),

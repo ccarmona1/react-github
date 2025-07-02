@@ -1,11 +1,11 @@
 import { Octokit } from "@octokit/rest";
 import type { Organization } from "../types/Organization";
-import type { VersionControlProvider } from "./VersionControlProvider";
+import type { VersionControlClient } from "./VersionControlClient";
 import { handleApiCall } from "../common/handle/handleApiCall";
 import type { RepositorySearchTerms } from "../types/RepositorySearchTerms";
 import type { Repository } from "../types/Repository";
 
-export class GitHubProvider implements VersionControlProvider {
+export class GitHubClient implements VersionControlClient {
   private octokit: Octokit;
 
   constructor() {

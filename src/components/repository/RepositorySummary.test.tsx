@@ -4,7 +4,7 @@ import { RepositorySummary } from "./RepositorySummary";
 import * as useServiceModule from "../../hooks/organization/useService";
 import { RepositoryService } from "../../services/repository/RepositoryService";
 import { OrganizationService } from "../../services/organization/OrganizationService";
-import type { VersionControlProvider } from "../../providers/VersionControlProvider";
+import type { VersionControlClient } from "../../providers/VersionControlClient";
 
 const mockRepository = {
   id: 1,
@@ -13,7 +13,7 @@ const mockRepository = {
   full_name: "org/repo1",
 };
 
-const createMockVersionControlProvider = (): VersionControlProvider => ({
+const createMockVersionControlProvider = (): VersionControlClient => ({
   getOrganization: jest.fn(),
   getRepositories: jest.fn(),
   getRepository: jest.fn().mockResolvedValue(mockRepository),
@@ -45,9 +45,11 @@ describe("RepositorySummary", () => {
       </MemoryRouter>
     );
     await waitFor(() => {
-      expect(screen.getByText(/repo1 Descripcioooon/)).toBeInTheDocument();
-      expect(screen.getByText(/A test repo/)).toBeInTheDocument();
-      expect(screen.getByText(/← Back/)).toBeInTheDocument();
+      expect(
+        screen.getByRole("heading", { name: "repo1" })
+      ).toBeInTheDocument();
+      expect(screen.getByText("A test repo")).toBeInTheDocument();
+      expect(screen.getByText("Back to repositories")).toBeInTheDocument();
     });
   });
 
@@ -66,7 +68,7 @@ describe("RepositorySummary", () => {
       </MemoryRouter>
     );
     await waitFor(() => {
-      expect(screen.getByText(/No description/)).toBeInTheDocument();
+      expect(screen.getByText("No description available")).toBeInTheDocument();
     });
   });
 });

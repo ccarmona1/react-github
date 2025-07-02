@@ -1,4 +1,4 @@
-import { GitHubProvider } from "./GitHubProvider";
+import { GitHubClient } from "./GitHubClient";
 
 const getOrgsMock = jest.fn();
 
@@ -15,10 +15,10 @@ jest.mock("@octokit/rest", () => {
 });
 
 describe("GitHubProvider", () => {
-  let provider: GitHubProvider;
+  let provider: GitHubClient;
 
   beforeEach(() => {
-    provider = new GitHubProvider();
+    provider = new GitHubClient();
     jest.clearAllMocks();
   });
 
@@ -52,7 +52,7 @@ describe("GitHubProvider", () => {
   });
 
   it("can be constructed", () => {
-    const provider = new GitHubProvider();
-    expect(provider).toBeInstanceOf(GitHubProvider);
+    const provider = new GitHubClient();
+    expect(provider).toBeInstanceOf(GitHubClient);
   });
 });

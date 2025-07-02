@@ -12,6 +12,8 @@ For common dev:
 - Use jest
 - Don't add comments
 - Validate good practices
+- Make everything simple
+- Always executes yarn build
 
 For Frontend:
 
@@ -22,12 +24,17 @@ For Frontend:
 For Styling:
 
 - Make sure to use tailwindcss for styling
-- Use tailwindcss classes for styling components
+- Create the css files for each component and import them in the component
 - Avoid inline styles
 - Use tailwindcss for responsive design
 - The app must be responsive and work on mobile devices
 - The app must be accessible and follow best practices for accessibility
 - The app must have a consistent design and follow best practices for UI/UX
+- The app must be pretty but not overdone
+- Don't over engineer the design
+- Keep it pretty but simple
+- Don't duplicate styles or code
+- Add loading spinner for async operations. A single spinner component can be used across the app.
 
 For UnitTests:
 

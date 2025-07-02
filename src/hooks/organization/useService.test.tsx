@@ -4,9 +4,9 @@ import { ServiceContext } from "./useService";
 import { OrganizationService } from "../../services/organization/OrganizationService";
 import { RepositoryService } from "../../services/repository/RepositoryService";
 import type { FC } from "react";
-import type { VersionControlProvider } from "../../providers/VersionControlProvider";
+import type { VersionControlClient } from "../../providers/VersionControlClient";
 
-const mockProvider: VersionControlProvider = {
+const mockProvider: VersionControlClient = {
   getOrganization: jest.fn(),
   getRepositories: jest.fn(),
   getRepository: jest.fn(),

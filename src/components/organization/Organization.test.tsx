@@ -1,14 +1,14 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import * as useServiceModule from "../../hooks/organization/useService";
-import type { VersionControlProvider } from "../../providers/VersionControlProvider";
+import type { VersionControlClient } from "../../providers/VersionControlClient";
 import { OrganizationService } from "../../services/organization/OrganizationService";
 import { RepositoryService } from "../../services/repository/RepositoryService";
 import { OrganizationView } from "./Organization";
 
 const mockOrganization = { login: "godaddy", description: "A test org" };
 
-const createMockVersionControlProvider = (): VersionControlProvider => ({
+const createMockVersionControlProvider = (): VersionControlClient => ({
   getOrganization: jest.fn().mockResolvedValue(mockOrganization),
   getRepositories: jest.fn(),
   getRepository: jest.fn(),
@@ -38,8 +38,7 @@ describe("OrganizationView", () => {
     );
     await waitFor(() => {
       expect(screen.getByText(/godaddy/i)).toBeInTheDocument();
-      expect(screen.getByText(/Organization Name/)).toBeInTheDocument();
-      expect(screen.getByText(/Description/)).toBeInTheDocument();
+      expect(screen.getByText("A test org")).toBeInTheDocument();
     });
   });
 
@@ -53,9 +52,7 @@ describe("OrganizationView", () => {
       </MemoryRouter>
     );
     await waitFor(() => {
-      expect(
-        screen.getByText(/Organization does not exist/)
-      ).toBeInTheDocument();
+      expect(screen.getByText(/does not exist/)).toBeInTheDocument();
     });
   });
 });

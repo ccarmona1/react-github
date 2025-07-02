@@ -2,6 +2,7 @@ import { useEffect, useState, type FC } from "react";
 import { Outlet, useParams } from "react-router-dom";
 import { useServices } from "../../hooks/organization/useService";
 import type { Organization } from "../../types/Organization";
+import { OrganizationInformation } from "./OrganizationInformation";
 
 export const OrganizationView: FC = () => {
   const [organization, setOrganization] = useState<Organization>();
@@ -20,16 +21,21 @@ export const OrganizationView: FC = () => {
   }, [organizationService, organizationName]);
 
   return (
-    <>
-      {organization ? (
-        <>
-          <>Organization Name: {JSON.stringify(organization.login)}</>
-          <>Description: {JSON.stringify(organization)}</>
-          <Outlet></Outlet>
-        </>
-      ) : (
-        <div>{organizationName} Organization does not exist</div>
-      )}
-    </>
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {organization ? (
+          <>
+            <OrganizationInformation organization={organization} />
+            <Outlet />
+          </>
+        ) : (
+          <div className="text-center py-12">
+            <div className="text-gray-500 text-lg">
+              Organization "{organizationName}" does not exist
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
