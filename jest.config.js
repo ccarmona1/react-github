@@ -18,7 +18,16 @@ export default {
         useESM: true,
       },
     ],
+    "^.+\\.(js|jsx)$": [
+      "ts-jest",
+      {
+        useESM: true,
+      },
+    ],
   },
+  transformIgnorePatterns: [
+    "node_modules/(?!(@octokit|universal-user-agent|before-after-hook|deprecation|once)/)",
+  ],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
   collectCoverageFrom: [
     "src/**/*.{ts,tsx}",
@@ -42,5 +51,9 @@ export default {
       lines: 80,
       statements: 80,
     },
+  },
+  globals: {
+    TextEncoder: TextEncoder,
+    TextDecoder: TextDecoder,
   },
 };

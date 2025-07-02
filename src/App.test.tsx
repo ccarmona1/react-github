@@ -1,9 +1,12 @@
+import { render, screen } from "@testing-library/react";
 import App from "./App";
-import { render } from "@testing-library/react";
 
-describe(App.name, () => {
-  it("should render my name", () => {
-    const { container } = render(<App />);
-    expect(container.textContent).toContain("Crisman");
+describe("App", () => {
+  it("renders without crashing and redirects to /godaddy", async () => {
+    render(<App />);
+    // Render root route and redirected content
+    expect(
+      await screen.findByText(/Organization does not exist/)
+    ).toBeInTheDocument();
   });
 });

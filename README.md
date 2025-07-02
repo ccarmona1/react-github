@@ -45,3 +45,7 @@ yarn dev
 - `yarn test` - Run tests
 - `yarn lint` - Check code quality
 - `yarn lint:strict` - Strict linting with zero warnings
+
+## Future implementations:
+
+- Implementation of an AbortController to avoid sending the same request to GitHub without resolving a previous one.
