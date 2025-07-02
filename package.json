@@ -16,7 +16,7 @@
     "lint:strict": "eslint . --max-warnings 0",
     "preview": "yarn build && vite preview",
     "test": "jest",
-    "test:coverage": "test --coverage"
+    "test:coverage": "test --coverage --watchAll=false"
   },
   "dependencies": {
     "react": "^19.1.0",
