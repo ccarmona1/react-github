@@ -1,6 +1,8 @@
 import { handleApiCall } from "./handleApiCall";
 
 describe("handleApiCall", () => {
+  afterEach(jest.clearAllMocks);
+
   it("returns data when status is 200", async () => {
     const apiCall = jest.fn().mockResolvedValue({ status: 200, data: "ok" });
     const result = await handleApiCall(apiCall, "test");

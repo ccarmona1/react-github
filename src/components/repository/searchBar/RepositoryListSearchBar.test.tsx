@@ -3,6 +3,8 @@ import { RepositoryListSearchBar } from "./RepositoryListSearchBar";
 import type { RepositorySearchTerms } from "../../../types/RepositorySearchTerms";
 
 describe("RepositoryListSearchBar", () => {
+  afterEach(jest.clearAllMocks);
+
   const defaultTerms: RepositorySearchTerms = {
     type: "all",
     sort: "created",

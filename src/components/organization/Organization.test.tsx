@@ -26,6 +26,8 @@ jest.spyOn(useServiceModule, "useServices").mockReturnValue({
 });
 
 describe("OrganizationView", () => {
+  afterEach(jest.clearAllMocks);
+
   it("renders organization info after fetch", async () => {
     render(
       <MemoryRouter initialEntries={["/godaddy"]}>

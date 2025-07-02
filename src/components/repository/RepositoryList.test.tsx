@@ -7,6 +7,8 @@ import { OrganizationService } from "../../services/organization/OrganizationSer
 import type { VersionControlProvider } from "../../providers/VersionControlProvider";
 
 describe("RepositoryList", () => {
+  afterEach(jest.clearAllMocks);
+
   const mockRepositories = [
     { id: 1, name: "repo1", full_name: "org/repo1" },
     { id: 2, name: "repo2", full_name: "org/repo2" },

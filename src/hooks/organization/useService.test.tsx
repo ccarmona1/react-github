@@ -13,6 +13,8 @@ const mockProvider: VersionControlProvider = {
 };
 
 describe("useServices", () => {
+  afterEach(jest.clearAllMocks);
+
   it("returns context when inside provider", () => {
     const services = {
       organizationService: new OrganizationService(mockProvider),

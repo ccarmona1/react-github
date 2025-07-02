@@ -31,6 +31,8 @@ jest.spyOn(useServiceModule, "useServices").mockReturnValue({
 });
 
 describe("RepositorySummary", () => {
+  afterEach(jest.clearAllMocks);
+
   it("renders repository summary after fetch", async () => {
     render(
       <MemoryRouter initialEntries={["/org/repo1"]}>

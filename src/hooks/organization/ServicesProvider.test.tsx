@@ -6,6 +6,8 @@ import { ServicesProvider } from "./ServicesProvider";
 import { useContext } from "react";
 
 describe("ServicesProvider", () => {
+  afterEach(jest.clearAllMocks);
+
   it("provides services to children", () => {
     const childText = "test child";
     const TestChild = () => <div>{childText}</div>;
