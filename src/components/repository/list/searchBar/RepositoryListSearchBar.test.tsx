@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { RepositoryListSearchBar } from "./RepositoryListSearchBar";
-import type { RepositorySearchTerms } from "../../../types/RepositorySearchTerms";
+import type { RepositorySearchTerms } from "../../../../types/RepositorySearchTerms";
 
 describe("RepositoryListSearchBar", () => {
   afterEach(jest.clearAllMocks);

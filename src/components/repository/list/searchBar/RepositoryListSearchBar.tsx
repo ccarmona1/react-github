@@ -1,5 +1,5 @@
 import { useCallback, type FC } from "react";
-import type { RepositorySearchTerms } from "../../../types/RepositorySearchTerms";
+import type { RepositorySearchTerms } from "../../../../types/RepositorySearchTerms";
 
 interface RepositoryListSearchBarProps {
   onSearchChange: (searchTerms: RepositorySearchTerms) => void;

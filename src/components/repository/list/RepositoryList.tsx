@@ -3,7 +3,7 @@ import { useServices } from "../../../hooks/organization/useService";
 import type { Repository } from "../../../types/Repository";
 import type { RepositorySearchTerms } from "../../../types/RepositorySearchTerms";
 import { RepositoryLink } from "./RepositoryLink";
-import { RepositoryListSearchBar } from "../searchBar/RepositoryListSearchBar";
+import { RepositoryListSearchBar } from "./searchBar/RepositoryListSearchBar";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Card } from "../../common/Card";
 
