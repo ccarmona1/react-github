@@ -51,7 +51,7 @@ export const RepositorySummary: FC = () => {
 
   return (
     repository && (
-      <Card className="max-w-2xl mx-auto mt-8 bg-gradient-to-br from-white via-blue-50 to-blue-100 shadow-2xl rounded-2xl border border-gray-200">
+      <Card className="mt-8 bg-gradient-to-br from-white via-blue-50 to-blue-100 shadow-2xl rounded-2xl border border-gray-200">
         <div className="mb-4">
           <Link
             to={`/${organizationName}`}

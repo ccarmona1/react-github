@@ -8,9 +8,9 @@ export class DummyProvider implements VersionControlClient {
       id: "fakeId",
       reposUrl: "fakeReposUrl",
       avatarUrl: "",
-      followers: 0,
-      following: 0,
-      publicRepos: 0,
+      followers: 1,
+      following: 2,
+      publicRepos: 3,
       login: organizationName,
       htmlUrl: "Dummy",
     };

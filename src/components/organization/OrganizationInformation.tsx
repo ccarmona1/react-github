@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import type { Organization } from "../../types/Organization";
 import { Card } from "../common/Card";
+import { GoRepo, GoPeople, GoPerson } from "react-icons/go";
 
 interface OrganizationInformationProps {
   organization: Organization;
@@ -10,8 +11,8 @@ export const OrganizationInformation: FC<OrganizationInformationProps> = ({
   organization,
 }) => {
   return (
-    <Card>
-      <div className="flex items-center space-x-4">
+    <Card className="mt-8 bg-gradient-to-br from-white via-blue-50 to-blue-100 shadow-2xl rounded-2xl border border-gray-200">
+      <div className="flex items-center gap-6 mb-4">
         <img
           src={
             organization.avatarUrl && organization.avatarUrl.length > 0
@@ -19,29 +20,40 @@ export const OrganizationInformation: FC<OrganizationInformationProps> = ({
               : "not-found.png"
           }
           alt={`${organization.login} avatar`}
-          className="w-16 h-16 rounded-full"
+          className="w-20 h-20 rounded-full border-4 border-blue-100 shadow-md bg-white object-cover"
         />
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="text-3xl font-extrabold text-gray-900 mb-1">
             {organization.login}
           </h1>
           {organization.description && (
-            <p className="text-gray-600 mt-1">{organization.description}</p>
+            <p className="text-gray-600 text-base mt-1">
+              {organization.description}
+            </p>
           )}
         </div>
       </div>
-      <div className="mt-4 flex space-x-6 text-sm text-gray-600">
-        <div className="flex items-center">
-          <span className="font-medium">{organization.publicRepos}</span>
-          <span className="ml-1">repositories</span>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-base text-gray-700 mt-6">
+        <div className="flex flex-col items-center bg-white/80 backdrop-blur-sm border border-blue-100 rounded-lg px-4 py-3 shadow-sm">
+          <span className="font-semibold text-blue-800 text-lg flex items-center gap-1">
+            <GoRepo className="text-blue-400" />
+            {organization.publicRepos}
+          </span>
+          <span className="text-gray-600 text-xs mt-1">Repositories</span>
         </div>
-        <div className="flex items-center">
-          <span className="font-medium">{organization.followers}</span>
-          <span className="ml-1">followers</span>
+        <div className="flex flex-col items-center bg-white/80 backdrop-blur-sm border border-blue-100 rounded-lg px-4 py-3 shadow-sm">
+          <span className="font-semibold text-blue-800 text-lg flex items-center gap-1">
+            <GoPeople className="text-blue-400" />
+            {organization.followers}
+          </span>
+          <span className="text-gray-600 text-xs mt-1">Followers</span>
         </div>
-        <div className="flex items-center">
-          <span className="font-medium">{organization.following}</span>
-          <span className="ml-1">following</span>
+        <div className="flex flex-col items-center bg-white/80 backdrop-blur-sm border border-blue-100 rounded-lg px-4 py-3 shadow-sm">
+          <span className="font-semibold text-blue-800 text-lg flex items-center gap-1">
+            <GoPerson className="text-blue-400" />
+            {organization.following}
+          </span>
+          <span className="text-gray-600 text-xs mt-1">Following</span>
         </div>
       </div>
     </Card>
