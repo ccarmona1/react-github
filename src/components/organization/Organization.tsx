@@ -3,19 +3,23 @@ import { Outlet, useParams } from "react-router-dom";
 import { useServices } from "../../hooks/organization/useService";
 import type { Organization } from "../../types/Organization";
 import { OrganizationInformation } from "./OrganizationInformation";
+import { LoadingSpinner } from "../common/LoadingSpinner";
 
 export const OrganizationView: FC = () => {
   const [organization, setOrganization] = useState<Organization>();
+  const [loading, setLoading] = useState<boolean>(true);
   const { organizationName } = useParams();
 
   const { organizationService } = useServices();
 
   useEffect(() => {
+    setLoading(true);
     const getOrganization = async () => {
       const organization = await organizationService.getOrganization(
         organizationName!
       );
       setOrganization(organization);
+      setLoading(false);
     };
     getOrganization();
   }, [organizationService, organizationName]);
@@ -28,6 +32,8 @@ export const OrganizationView: FC = () => {
             <OrganizationInformation organization={organization} />
             <Outlet />
           </>
+        ) : loading ? (
+          <LoadingSpinner />
         ) : (
           <div className="text-center py-12">
             <div className="text-gray-500 text-lg max-w-xl mx-auto">

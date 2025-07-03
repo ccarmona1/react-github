@@ -7,6 +7,7 @@ import { RepositoryListSearchBar } from "./searchBar/RepositoryListSearchBar";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Card } from "../../common/Card";
 import { DynamicIcon } from "../../common/DynamicIcon";
+import { LoadingSpinner } from "../../common/LoadingSpinner";
 
 const DEFAULT_TERMS: RepositorySearchTerms = {
   type: "all",
@@ -39,6 +40,7 @@ export const RepositoryList: FC = () => {
     [searchParams]
   );
   const [repositories, setRepositories] = useState<Repository[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   const { repositoryService } = useServices();
 
   useEffect(() => {
@@ -50,6 +52,7 @@ export const RepositoryList: FC = () => {
 
   useEffect(() => {
     if (!organizationName) return;
+    setLoading(true);
     const getRepositories = async () => {
       try {
         const repos = await repositoryService.getRepositories(
@@ -60,6 +63,7 @@ export const RepositoryList: FC = () => {
       } catch {
         setRepositories([]);
       }
+      setLoading(false);
     };
     getRepositories();
   }, [organizationName, repositoryService, searchTerms]);
@@ -95,16 +99,54 @@ export const RepositoryList: FC = () => {
         />
       </div>
       {repositories.length > 0 && organizationName ? (
-        <div className="grid gap-4">
-          {repositories.map((repository: Repository) => (
-            <div key={repository.id} className="card-section">
-              <RepositoryLink
-                organizationName={organizationName}
-                repository={repository}
-              />
+        loading ? (
+          <LoadingSpinner />
+        ) : (
+          <>
+            <div className="grid gap-4">
+              {repositories.map((repository: Repository) => (
+                <div key={repository.id} className="card-section">
+                  <RepositoryLink
+                    organizationName={organizationName}
+                    repository={repository}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+            <div className="flex justify-center gap-4 mt-8">
+              <button
+                className="pagination-btn"
+                onClick={() =>
+                  handleSearchChange({
+                    ...searchTerms,
+                    page: (searchTerms.page || 1) - 1,
+                  })
+                }
+                disabled={!searchTerms.page || searchTerms.page <= 1 || loading}
+                aria-label="Previous page"
+              >
+                Previous
+              </button>
+              <button
+                className="pagination-btn"
+                onClick={() =>
+                  handleSearchChange({
+                    ...searchTerms,
+                    page: (searchTerms.page || 1) + 1,
+                  })
+                }
+                disabled={
+                  !searchTerms.per_page ||
+                  repositories.length < searchTerms.per_page ||
+                  loading
+                }
+                aria-label="Next page"
+              >
+                Next
+              </button>
+            </div>
+          </>
+        )
       ) : (
         <div className="text-center-empty">
           <div className="text-gray-empty">No repositories found.</div>
