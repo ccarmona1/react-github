@@ -6,6 +6,8 @@ A modern, responsive, and accessible GitHub organization explorer built with Rea
 
 ## Why these technologies?
 
+- **TypeScript**: I chose TypeScript because it provides type safety, helps prevent bugs, and improves code quality and maintainability.
+- **ESLint**: I use ESLint to ensure code quality, consistency, and to catch potential issues early in the development process.
 - **Jest**: I chose Jest because it is a well-known library that I have extensive experience with. It allows me to create tests and validate every implementation in each iteration/commit. I also set up a GitHub Action to receive real-time notifications if a commit does not meet minimum requirements such as unit tests, coverage, or linting.
 - **TailwindCSS**: I chose Tailwind because it is lightweight and provides an easy way to apply styles.
 - **Vite**: I chose Vite because it enables building a React app from scratch using the latest industry standards.
@@ -78,23 +80,28 @@ yarn dev
 
 ```mermaid
 graph TD
-  A[App.tsx] -->|Provider| B[ServicesProvider]
-  B -->|Context| C[OrganizationService]
-  B -->|Context| D[RepositoryService]
-  A -->|Router| E[OrganizationView]
-  E -->|useServices| C
-  E -->|Outlet| F[RepositoryList]
-  F -->|useServices| D
-  F -->|RepositoryLink| G[RepositorySummary]
-  C -->|getOrganization| H[GitHubClient/DummyClient]
-  D -->|getRepositories|getRepository|getRepositoryLanguages| H
+  App[App.tsx]
+  Provider[ServicesProvider]
+  Router[react-router-dom]
+  OrgView[OrganizationView /:organizationName]
+  RepoList[RepositoryList /:organizationName]
+  RepoSummary[RepositorySummary /:organizationName/repository/:repositoryName]
+  GitHub[GitHubClient/DummyClient]
+
+  App --> Provider
+  App --> Router
+  Router --> OrgView
+  OrgView --> RepoList
+  OrgView --> RepoSummary
+  Provider --> GitHub
 ```
 
+- `/:organizationName` shows organization info and repositories
+- `/:organizationName/repository/:repositoryName` shows repository details
 - `App.tsx` provides context and routes
 - `ServicesProvider` injects services depending on the environment
-- Services abstract data access (real GitHub or mock)
-- Components consume services via hooks/context
-- The design is simple, decoupled, and easy to test
+- `react-router-dom` handles routing between views
+- `GitHubClient/DummyClient` provides data (real or mock)
 
 ---
 
@@ -104,5 +111,3 @@ graph TD
 - Refactor TailwindCSS with more reusable components
 - Add E2E tests (Cypress or Playwright)
 - Enhance loading and error states
-
----
