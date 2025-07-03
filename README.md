@@ -82,13 +82,6 @@ This project was developed with the help of GitHub Copilot, an AI-powered coding
 This project was reviewed by an LLM (GitHub Copilot) according to the internal guidelines defined in `.github/instructions/react.instructions.md`.  
 The review covered all main files in the repository, checking for best practices in configuration, dependencies, code structure, styling, and testing.
 
----
-
-## Codebase Review by LLM
-
-This project was reviewed by an LLM (GitHub Copilot) according to the internal guidelines defined in `.github/instructions/react.instructions.md`.  
-The review covered all main files in the repository, checking for best practices in configuration, dependencies, code structure, styling, and testing.
-
 ### Review Summary
 
 - **Configuration & Dependencies:**  
@@ -151,6 +144,7 @@ graph TD
 - Add AbortController to prevent duplicate GitHub requests
 - Refactor TailwindCSS with more reusable components
 - Add E2E tests (Cypress or Playwright)
+- Add an input field to easily switch organizations from the UI (currently, organization changes are only possible via the URL path)
 
 ---
 
@@ -162,3 +156,13 @@ Branches     : 80.76% ( 84/104 )
 Functions    : 90.9% ( 50/55 )
 Lines        : 94.93% ( 206/217 )
 ```
+
+---
+
+## Git Tags
+
+This repository includes the following Git tags to mark key milestones in the application's development:
+
+- **1.0.0** — Version without styles
+- **2.0.0** — Initial version with styles
+- **3.0.0** — Final version of the app

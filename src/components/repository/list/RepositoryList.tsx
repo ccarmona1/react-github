@@ -12,7 +12,7 @@ import { LoadingSpinner } from "../../common/LoadingSpinner";
 const DEFAULT_TERMS: RepositorySearchTerms = {
   type: "all",
   sort: "created",
-  per_page: 10,
+  per_page: 3,
   page: 1,
 };
 
