@@ -64,6 +64,7 @@ yarn dev
 - `yarn build` — Build for production
 - `yarn preview` — Preview the production build
 - `yarn test` — Run unit tests
+- `yarn test:coverage` — Run unit test coverage
 - `yarn lint` — Check code quality
 - `yarn lint:strict` — Strict linting (no warnings)
 - Open http://localhost:4173/ in your browser for preview
@@ -151,3 +152,14 @@ graph TD
 - Refactor TailwindCSS with more reusable components
 - Add E2E tests (Cypress or Playwright)
 - Enhance loading and error states
+
+---
+
+## Test Coverage Summary
+
+```
+Statements   : 94.95% ( 226/238 )
+Branches     : 80.76% ( 84/104 )
+Functions    : 90.9% ( 50/55 )
+Lines        : 94.93% ( 206/217 )
+```
