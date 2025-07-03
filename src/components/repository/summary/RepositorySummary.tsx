@@ -5,6 +5,7 @@ import type { Repository } from "../../../types/Repository";
 import { languageIconMap } from "../../../utils/languageIconMap";
 import { Card } from "../../common/Card";
 import { DynamicIcon } from "../../common/DynamicIcon";
+import { LoadingSpinner } from "../../common/LoadingSpinner";
 
 export const RepositorySummary: FC = () => {
   const { organizationName, repositoryName } = useParams();
@@ -14,6 +15,7 @@ export const RepositorySummary: FC = () => {
     Record<string, number> | undefined
   >();
   const [totalSize, setTotalSize] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(true);
 
   if (!organizationName || !repositoryName) {
     navigate("");
@@ -22,6 +24,7 @@ export const RepositorySummary: FC = () => {
   const { repositoryService } = useServices();
 
   useEffect(() => {
+    setLoading(true);
     const getData = async () => {
       if (organizationName && repositoryName) {
         try {
@@ -42,13 +45,18 @@ export const RepositorySummary: FC = () => {
             );
             setTotalSize(totalSize);
           }
-        } catch (error) {
-          console.error("Error fetching repository:", error);
+          setLoading(false);
+        } catch {
+          setLoading(false);
         }
       }
     };
     getData();
   }, [organizationName, repositoryName, repositoryService]);
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
 
   if (!repository) {
     return (
