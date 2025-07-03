@@ -14,7 +14,7 @@ export const OrganizationInformation: FC<OrganizationInformationProps> = ({
       <div className="flex items-center space-x-4">
         <img
           src={
-            organization.avatarUrl.length > 0
+            organization.avatarUrl && organization.avatarUrl.length > 0
               ? organization.avatarUrl
               : "not-found.png"
           }

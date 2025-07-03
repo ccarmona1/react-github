@@ -6,7 +6,20 @@ import { OrganizationService } from "../../services/organization/OrganizationSer
 import { RepositoryService } from "../../services/repository/RepositoryService";
 import { OrganizationView } from "./Organization";
 
-const mockOrganization = { login: "godaddy", description: "A test org" };
+const mockOrganization = {
+  id: "1",
+  reposUrl: "",
+  avatarUrl: "avatar.png",
+  followers: 10,
+  following: 5,
+  publicRepos: 3,
+  login: "godaddy",
+  blog: undefined,
+  email: undefined,
+  twitterUsername: undefined,
+  description: "A test org",
+  htmlUrl: "https://github.com/godaddy",
+};
 
 const createMockVersionControlProvider = (): VersionControlClient => ({
   getOrganization: jest.fn().mockResolvedValue(mockOrganization),
