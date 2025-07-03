@@ -1,4 +1,4 @@
-import { useEffect, useState, type FC } from "react";
+import { useEffect, useState, useMemo, type FC } from "react";
 import { useServices } from "../../hooks/organization/useService";
 import type { Repository } from "../../types/Repository";
 import type { RepositorySearchTerms } from "../../types/RepositorySearchTerms";
@@ -34,7 +34,7 @@ export const RepositoryList: FC = () => {
   const { organizationName } = useParams();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchTerms = getSearchTermsFromParams(searchParams);
+  const searchTerms = useMemo(() => getSearchTermsFromParams(searchParams), [searchParams]);
   const [repositories, setRepositories] = useState<Repository[]>([]);
   const { repositoryService } = useServices();
 
