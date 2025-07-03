@@ -140,6 +140,7 @@ graph TD
 
 ## Future Improvements
 
+- Implement a robust error handling mechanism with user-friendly error messages and fallback UI components
 - Add AbortController in data fetching hooks or the service layer to prevent duplicated GitHub requests
 - Refactor TailwindCSS with more reusable components
 - Add E2E tests (Cypress or Playwright)
@@ -150,10 +151,10 @@ graph TD
 ## Test Coverage Summary
 
 ```
-Statements   : 94.95% ( 226/238 )
-Branches     : 80.76% ( 84/104 )
-Functions    : 90.9% ( 50/55 )
-Lines        : 94.93% ( 206/217 )
+Statements   : 94.63% ( 247/261 )
+Branches     : 81.35% ( 96/118 )
+Functions    : 90.47% ( 57/63 )
+Lines        : 94.51% ( 224/237 )
 ```
 
 ---
