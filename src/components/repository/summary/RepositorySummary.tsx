@@ -35,11 +35,13 @@ export const RepositorySummary: FC = () => {
             repositoryName
           );
           setLanguages(languages);
-          const totalSize = Object.values(languages).reduce(
-            (sum, size) => sum + size,
-            0
-          );
-          setTotalSize(totalSize);
+          if (languages) {
+            const totalSize = Object.values(languages).reduce(
+              (sum, size) => sum + size,
+              0
+            );
+            setTotalSize(totalSize);
+          }
         } catch (error) {
           console.error("Error fetching repository:", error);
         }
