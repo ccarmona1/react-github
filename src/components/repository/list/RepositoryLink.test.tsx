@@ -12,6 +12,7 @@ describe("RepositoryLink", () => {
     size: 0,
     openIssues: 0,
     watchers: 0,
+    issuesUrl: "",
   };
 
   it("renders repository name and description", () => {

@@ -122,11 +122,18 @@ export const RepositorySummary: FC = () => {
                 <DynamicIcon
                   lib="go"
                   icon="GoIssueOpened"
-                  className="mr-1 text-sky-400"
+                  className="mr-1 text-sky-500"
                 />
                 Open issues
               </span>
-              <span className="text-gray-600">{repository.openIssues}</span>
+              <a
+                href={repository.httpUrl + "/issues"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sky-600"
+              >
+                {repository.openIssues}
+              </a>
             </div>
             <div className="card-section">
               <span className="font-medium text-gray-800 flex items-center">

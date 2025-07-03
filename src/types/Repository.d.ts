@@ -6,4 +6,5 @@ export interface Repository {
   openIssues: number;
   watchers: number;
   description?: string | null;
+  issuesUrl: string;
 }

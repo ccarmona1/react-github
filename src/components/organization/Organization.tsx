@@ -30,8 +30,22 @@ export const OrganizationView: FC = () => {
           </>
         ) : (
           <div className="text-center py-12">
-            <div className="text-gray-500 text-lg">
-              Organization "{organizationName}" does not exist
+            <div className="text-gray-500 text-lg max-w-xl mx-auto">
+              <div className="mb-2 font-semibold text-gray-700">
+                Organization "{organizationName}" not found
+              </div>
+              <div className="text-base text-gray-400">
+                This may be due to a typo, the organization not existing, or a
+                temporary issue with GitHub's API rate limits.
+                <br />
+                <span className="block mt-2">
+                  If you want to try the app without API limits, set{" "}
+                  <span className="font-mono bg-gray-100 px-1 rounded">
+                    NODE_ENV=dev
+                  </span>{" "}
+                  to use mock data.
+                </span>
+              </div>
             </div>
           </div>
         )}

@@ -1,10 +1,10 @@
-import { DummyProvider } from "./DummyProvider";
+import { DummyClient } from "./DummyClient";
 
-describe("DummyProvider", () => {
-  let provider: DummyProvider;
+describe("DummyClient", () => {
+  let provider: DummyClient;
 
   beforeEach(() => {
-    provider = new DummyProvider();
+    provider = new DummyClient();
   });
 
   it("should get organization data", async () => {
@@ -32,6 +32,7 @@ describe("DummyProvider", () => {
         size: 200,
         openIssues: 1,
         watchers: 2,
+        issuesUrl: "",
       },
     ]);
   });
@@ -46,6 +47,7 @@ describe("DummyProvider", () => {
       size: 200,
       openIssues: 1,
       watchers: 2,
+      issuesUrl: "fakeReposUrl",
     });
   });
 });

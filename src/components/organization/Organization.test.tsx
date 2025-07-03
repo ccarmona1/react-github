@@ -66,7 +66,7 @@ describe("OrganizationView", () => {
       </MemoryRouter>
     );
     await waitFor(() => {
-      expect(screen.getByText(/does not exist/)).toBeInTheDocument();
+      expect(screen.getByText(/mock data/)).toBeInTheDocument();
     });
   });
 });

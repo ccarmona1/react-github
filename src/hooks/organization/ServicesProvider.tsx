@@ -3,7 +3,7 @@ import { GitHubClient } from "../../providers/GitHubClient";
 import { OrganizationService } from "../../services/organization/OrganizationService";
 import { ServiceContext } from "./useService";
 import { RepositoryService } from "../../services/repository/RepositoryService";
-import { DummyProvider } from "../../providers/DummyProvider";
+import { DummyClient } from "../../providers/DummyClient";
 
 interface ServicesProviderProps {
   children: ReactNode;
@@ -12,7 +12,7 @@ interface ServicesProviderProps {
 export const ServicesProvider: FC<ServicesProviderProps> = ({ children }) => {
   const services = useMemo(() => {
     const isDev = process.env.NODE_ENV === "dev";
-    const provider = isDev ? new DummyProvider() : new GitHubClient();
+    const provider = isDev ? new DummyClient() : new GitHubClient();
     return {
       organizationService: new OrganizationService(provider),
       repositoryService: new RepositoryService(provider),

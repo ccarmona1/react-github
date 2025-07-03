@@ -2,7 +2,7 @@ import type { Organization } from "../types/Organization";
 import type { Repository } from "../types/Repository";
 import type { VersionControlClient } from "./VersionControlClient";
 
-export class DummyProvider implements VersionControlClient {
+export class DummyClient implements VersionControlClient {
   async getOrganization(organizationName: string): Promise<Organization> {
     const organization: Organization = {
       id: "fakeId",
@@ -26,6 +26,7 @@ export class DummyProvider implements VersionControlClient {
       size: 200,
       openIssues: 1,
       watchers: 2,
+      issuesUrl: "",
     };
     return [repository];
   }
@@ -39,6 +40,7 @@ export class DummyProvider implements VersionControlClient {
       size: 200,
       openIssues: 1,
       watchers: 2,
+      issuesUrl: "fakeReposUrl",
     };
     return repository;
   }

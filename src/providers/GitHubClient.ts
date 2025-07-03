@@ -55,6 +55,7 @@ export class GitHubClient implements VersionControlClient {
       size: repo.size ?? 0,
       openIssues: repo.open_issues_count ?? 0,
       watchers: repo.watchers_count ?? 0,
+      issuesUrl: repo.issues_url,
     }));
   }
 
@@ -79,6 +80,7 @@ export class GitHubClient implements VersionControlClient {
       size: repo.size,
       openIssues: repo.open_issues_count,
       watchers: repo.watchers_count,
+      issuesUrl: repo.issues_url,
     };
   }
 
