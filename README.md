@@ -141,7 +141,7 @@ graph TD
 
 ## Future Improvements
 
-- Add AbortController to prevent duplicate GitHub requests
+- Add AbortController in data fetching hooks or the service layer to prevent duplicated GitHub requests
 - Refactor TailwindCSS with more reusable components
 - Add E2E tests (Cypress or Playwright)
 - Add an input field to easily switch organizations from the UI (currently, organization changes are only possible via the URL path)
