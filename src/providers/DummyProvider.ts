@@ -17,18 +17,33 @@ export class DummyProvider implements VersionControlClient {
     return organization;
   }
 
-  async getRepositories(organizationName: string): Promise<Repository[]> {
+  async getRepositories(): Promise<Repository[]> {
     const repository: Repository = {
       id: "1",
-      name: organizationName,
+      name: "My Repo 1",
+      description: "This is a dummy repository",
+      httpUrl: "someUrl",
+      size: 200,
+      openIssues: 1,
+      watchers: 2,
     };
     return [repository];
   }
-  async getRepository(organizationName: string): Promise<Repository> {
+
+  async getRepository(): Promise<Repository> {
     const repository: Repository = {
       id: "1",
-      name: organizationName,
+      name: "My Repo 1",
+      description: "This is a dummy repository",
+      httpUrl: "someUrl",
+      size: 200,
+      openIssues: 1,
+      watchers: 2,
     };
     return repository;
+  }
+
+  async getRepositoryLanguages(): Promise<Record<string, number>> {
+    return { javascript: 100, python: 100 };
   }
 }

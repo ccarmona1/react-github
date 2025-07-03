@@ -10,6 +10,7 @@ const mockProvider: VersionControlClient = {
   getOrganization: jest.fn(),
   getRepositories: jest.fn(),
   getRepository: jest.fn(),
+  getRepositoryLanguages: jest.fn(),
 };
 
 describe("useServices", () => {

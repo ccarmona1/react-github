@@ -51,6 +51,10 @@ export class GitHubClient implements VersionControlClient {
       id: repo.id.toString(),
       name: repo.name,
       description: repo.description,
+      httpUrl: repo.html_url,
+      size: repo.size ?? 0,
+      openIssues: repo.open_issues_count ?? 0,
+      watchers: repo.watchers_count ?? 0,
     }));
   }
 
@@ -71,6 +75,26 @@ export class GitHubClient implements VersionControlClient {
       id: repo.id.toString(),
       name: repo.name,
       description: repo.description,
+      httpUrl: repo.html_url,
+      size: repo.size,
+      openIssues: repo.open_issues_count,
+      watchers: repo.watchers_count,
     };
+  }
+
+  async getRepositoryLanguages(
+    organizationName: string,
+    repositoryName: string
+  ): Promise<Record<string, number>> {
+    const languages = await handleApiCall(
+      () =>
+        this.octokit.rest.repos.listLanguages({
+          owner: organizationName,
+          repo: repositoryName,
+        }),
+      "fetch repository languages"
+    );
+
+    return languages;
   }
 }

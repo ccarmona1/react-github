@@ -12,4 +12,8 @@ export interface VersionControlClient {
     organizationName: string,
     repositoryName: string
   ): Promise<Repository>;
+  getRepositoryLanguages(
+    organizationName: string,
+    repositoryName: string
+  ): Promise<Record<string, number>>;
 }

@@ -17,6 +17,7 @@ const createMockVersionControlProvider = (): VersionControlClient => ({
   getOrganization: jest.fn(),
   getRepositories: jest.fn(),
   getRepository: jest.fn().mockResolvedValue(mockRepository),
+  getRepositoryLanguages: jest.fn(),
 });
 
 const mockVersionControlProvider = createMockVersionControlProvider();

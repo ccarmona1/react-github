@@ -36,4 +36,18 @@ export class RepositoryService {
       return undefined;
     }
   }
+
+  async getRepositoryLanguages(
+    organizationName: string,
+    repositoryName: string
+  ): Promise<Record<string, number> | undefined> {
+    try {
+      return await this.versionControlProvider.getRepositoryLanguages(
+        organizationName,
+        repositoryName
+      );
+    } catch {
+      return undefined;
+    }
+  }
 }

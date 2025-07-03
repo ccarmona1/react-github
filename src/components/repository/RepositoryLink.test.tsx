@@ -8,6 +8,10 @@ describe("RepositoryLink", () => {
     id: "1",
     name: "repo1",
     description: "A test repo",
+    httpUrl: "",
+    size: 0,
+    openIssues: 0,
+    watchers: 0,
   };
 
   it("renders repository name and description", () => {

@@ -18,6 +18,7 @@ describe("RepositoryList", () => {
     getOrganization: jest.fn(),
     getRepositories: jest.fn().mockResolvedValue(mockRepositories),
     getRepository: jest.fn(),
+    getRepositoryLanguages: jest.fn(),
   });
 
   const getServices = (provider?: VersionControlClient) => {
