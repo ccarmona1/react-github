@@ -1,5 +1,34 @@
-import { GoRepo, GoLink, GoDatabase, GoIssueOpened, GoEye, GoPeople, GoPerson, GoChevronRight } from "react-icons/go";
-import { SiJavascript, SiTypescript, SiPython, SiRuby, SiGo, SiRust, SiPhp, SiC, SiCplusplus, SiSharp, SiHtml5, SiCss3, SiGnubash, SiSwift, SiKotlin, SiDart, SiScala, SiPerl, SiR } from "react-icons/si";
+import {
+  GoRepo,
+  GoLink,
+  GoDatabase,
+  GoIssueOpened,
+  GoEye,
+  GoPeople,
+  GoPerson,
+  GoChevronRight,
+} from "react-icons/go";
+import {
+  SiJavascript,
+  SiTypescript,
+  SiPython,
+  SiRuby,
+  SiGo,
+  SiRust,
+  SiPhp,
+  SiC,
+  SiCplusplus,
+  SiSharp,
+  SiHtml5,
+  SiCss3,
+  SiGnubash,
+  SiSwift,
+  SiKotlin,
+  SiDart,
+  SiScala,
+  SiPerl,
+  SiR,
+} from "react-icons/si";
 
 export const customIcons = {
   go: {

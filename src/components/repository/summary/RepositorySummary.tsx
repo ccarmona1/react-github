@@ -13,6 +13,7 @@ export const RepositorySummary: FC = () => {
   const [languages, setLanguages] = useState<
     Record<string, number> | undefined
   >();
+  const [totalSize, setTotalSize] = useState<number>(0);
 
   if (!organizationName || !repositoryName) {
     navigate("");
@@ -34,6 +35,11 @@ export const RepositorySummary: FC = () => {
             repositoryName
           );
           setLanguages(languages);
+          const totalSize = Object.values(languages).reduce(
+            (sum, size) => sum + size,
+            0
+          );
+          setTotalSize(totalSize);
         } catch (error) {
           console.error("Error fetching repository:", error);
         }
@@ -71,14 +77,22 @@ export const RepositorySummary: FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-base text-gray-700">
             <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm">
               <span className="font-medium text-gray-800 flex items-center">
-                <DynamicIcon lib="go" icon="GoRepo" className="mr-1 text-sky-400" />
+                <DynamicIcon
+                  lib="go"
+                  icon="GoRepo"
+                  className="mr-1 text-sky-400"
+                />
                 ID
               </span>
               <span className="truncate text-gray-600">{repository.id}</span>
             </div>
             <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm">
               <span className="font-medium text-gray-800 flex items-center">
-                <DynamicIcon lib="go" icon="GoLink" className="mr-1 text-sky-400" />
+                <DynamicIcon
+                  lib="go"
+                  icon="GoLink"
+                  className="mr-1 text-sky-400"
+                />
                 URL
               </span>
               <a
@@ -92,21 +106,33 @@ export const RepositorySummary: FC = () => {
             </div>
             <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm">
               <span className="font-medium text-gray-800 flex items-center">
-                <DynamicIcon lib="go" icon="GoDatabase" className="mr-1 text-sky-400" />
+                <DynamicIcon
+                  lib="go"
+                  icon="GoDatabase"
+                  className="mr-1 text-sky-400"
+                />
                 Size
               </span>
               <span className="text-gray-600">{repository.size} KB</span>
             </div>
             <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm">
               <span className="font-medium text-gray-800 flex items-center">
-                <DynamicIcon lib="go" icon="GoIssueOpened" className="mr-1 text-sky-400" />
+                <DynamicIcon
+                  lib="go"
+                  icon="GoIssueOpened"
+                  className="mr-1 text-sky-400"
+                />
                 Open issues
               </span>
               <span className="text-gray-600">{repository.openIssues}</span>
             </div>
             <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm">
               <span className="font-medium text-gray-800 flex items-center">
-                <DynamicIcon lib="go" icon="GoEye" className="mr-1 text-sky-400" />
+                <DynamicIcon
+                  lib="go"
+                  icon="GoEye"
+                  className="mr-1 text-sky-400"
+                />
                 Watchers
               </span>
               <span className="text-gray-600">{repository.watchers}</span>
@@ -131,7 +157,7 @@ export const RepositorySummary: FC = () => {
                           className="text-base"
                         />
                       )}
-                      {lang}: {((size * 100) / repository.size).toFixed(1)}%
+                      {lang}: {((size / totalSize) * 100).toFixed(1)}%
                     </li>
                   );
                 })}
