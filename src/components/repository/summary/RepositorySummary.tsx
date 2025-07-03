@@ -64,18 +64,14 @@ export const RepositorySummary: FC = () => {
         </div>
         <div className="flex flex-col md:flex-row md:items-center md:justify-between pb-4 mb-6 gap-4">
           <div>
-            <h1 className="heading-1">
-              {repository.name}
-            </h1>
+            <h1 className="heading-1">{repository.name}</h1>
             <p className="text-base-gray">
               {repository.description || "No description available"}
             </p>
           </div>
         </div>
         <div>
-          <h2 className="heading-3">
-            Repository details
-          </h2>
+          <h2 className="heading-3">Repository details</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-base text-gray-700">
             <div className="card-section">
               <span className="font-medium text-gray-800 flex items-center">

@@ -33,10 +33,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <div>
-          <label
-            htmlFor="type-select"
-            className="label-base"
-          >
+          <label htmlFor="type-select" className="label-base">
             Type
           </label>
           <select
@@ -57,10 +54,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
         </div>
 
         <div>
-          <label
-            htmlFor="sort-select"
-            className="label-base"
-          >
+          <label htmlFor="sort-select" className="label-base">
             Sort by
           </label>
           <select
@@ -79,10 +73,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
         </div>
 
         <div>
-          <label
-            htmlFor="per-page-input"
-            className="label-base"
-          >
+          <label htmlFor="per-page-input" className="label-base">
             Per page
           </label>
           <input
@@ -98,10 +89,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
         </div>
 
         <div>
-          <label
-            htmlFor="page-input"
-            className="label-base"
-          >
+          <label htmlFor="page-input" className="label-base">
             Page
           </label>
           <input
