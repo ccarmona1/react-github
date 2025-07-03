@@ -4,20 +4,32 @@ import type { Repository } from "../../types/Repository";
 import type { RepositorySearchTerms } from "../../types/RepositorySearchTerms";
 import { RepositoryLink } from "./RepositoryLink";
 import { RepositoryListSearchBar } from "./searchBar/RepositoryListSearchBar";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+
+const DEFAULT_TERMS: RepositorySearchTerms = {
+  type: "all",
+  sort: "created",
+  per_page: 10,
+  page: 1,
+};
+
+function getSearchTermsFromParams(
+  params: URLSearchParams
+): RepositorySearchTerms {
+  return {
+    type: params.get("type") || DEFAULT_TERMS.type,
+    sort: params.get("sort") || DEFAULT_TERMS.sort,
+    per_page: Number(params.get("per_page")) || DEFAULT_TERMS.per_page,
+    page: Number(params.get("page")) || DEFAULT_TERMS.page,
+  };
+}
 
 export const RepositoryList: FC = () => {
   const { organizationName } = useParams();
   const navigate = useNavigate();
-
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchTerms = getSearchTermsFromParams(searchParams);
   const [repositories, setRepositories] = useState<Repository[]>([]);
-  const [searchTerms, setSearchTerms] = useState<RepositorySearchTerms>({
-    type: "all",
-    sort: "created",
-    per_page: 10,
-    page: 1,
-  });
-
   const { repositoryService } = useServices();
 
   useEffect(() => {
@@ -37,8 +49,13 @@ export const RepositoryList: FC = () => {
     getRepositories();
   }, [setRepositories, organizationName, repositoryService, searchTerms]);
 
-  const handleSearchChange = (searchTerms: RepositorySearchTerms) => {
-    setSearchTerms(searchTerms);
+  const handleSearchChange = (terms: RepositorySearchTerms) => {
+    const params: Record<string, string> = {};
+    if (terms.type) params.type = terms.type;
+    if (terms.sort) params.sort = terms.sort;
+    if (terms.per_page) params.per_page = String(terms.per_page);
+    if (terms.page) params.page = String(terms.page);
+    setSearchParams(params, { replace: true });
   };
 
   if (!organizationName) {
