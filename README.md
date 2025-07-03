@@ -70,6 +70,46 @@ yarn dev
 
 ---
 
+## AI Assistance
+
+This project was developed with the help of GitHub Copilot, an AI-powered coding assistant. Copilot provided code suggestions, best practices, and automated reviews throughout the development process to ensure code quality, consistency, and adherence to modern standards.
+
+---
+
+## Codebase Review by LLM
+
+This project was reviewed by an LLM (GitHub Copilot) according to the internal guidelines defined in `.github/instructions/react.instructions.md`.  
+The review covered all main files in the repository, checking for best practices in configuration, dependencies, code structure, styling, and testing.
+
+---
+
+## Codebase Review by LLM
+
+This project was reviewed by an LLM (GitHub Copilot) according to the internal guidelines defined in `.github/instructions/react.instructions.md`.  
+The review covered all main files in the repository, checking for best practices in configuration, dependencies, code structure, styling, and testing.
+
+### Review Summary
+
+- **Configuration & Dependencies:**  
+  The project uses Vite, Yarn, Jest, TypeScript, and TailwindCSS, as recommended. Config files are simple and do not include unnecessary options.
+
+- **Styling:**  
+  All styling is implemented exclusively with TailwindCSS, avoiding inline styles and traditional CSS files. The design is responsive, accessible, and consistent, following UI/UX best practices.
+
+- **Source Code:**  
+  The codebase is written in TypeScript, using functional React components and modern hooks. There are no comments, no duplicated logic, and no over-engineering. A reusable loading spinner component is present for async operations.
+
+- **Testing:**  
+  Unit tests use Jest and Testing Library, with no mocks or spies on `console.log`. `jest.mock` is used appropriately, and tests cover relevant cases.
+
+- **Accessibility & UX:**  
+  The project applies accessibility best practices and maintains a simple, attractive design without unnecessary complexity.
+
+**Conclusion:**  
+The codebase follows all standards and best practices defined in the internal instructions, maintaining clean, simple, accessible, and well-structured code.
+
+---
+
 > ⚠️ **Warning: GitHub API Rate Limit**
 >
 > This app uses the public GitHub API, which has strict rate limits for unauthenticated requests. If you encounter errors or missing data, you may have hit the rate limit. To avoid this, you can run the app in mock mode by setting `NODE_ENV=dev` to use a Dummy data provider instead of real GitHub requests.
