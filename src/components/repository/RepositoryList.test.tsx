@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { RepositoryList } from "./RepositoryList";
 import * as useServiceModule from "../../hooks/organization/useService";
@@ -75,14 +75,15 @@ describe("RepositoryList", () => {
       repositoryService,
       organizationService,
     });
-    const { container } = render(
+    render(
       <MemoryRouter initialEntries={["/"]}>
         <Routes>
-          <Route path="/" element={<RepositoryList />} />
+          <Route path="/" element={<div>Home</div>} />
+          <Route path="/:organizationName" element={<RepositoryList />} />
         </Routes>
       </MemoryRouter>
     );
-    expect(container.innerHTML).toBe("");
+    expect(screen.getByText("Home")).toBeInTheDocument();
   });
 
   it("handles fetch error gracefully", async () => {
@@ -103,5 +104,65 @@ describe("RepositoryList", () => {
     await waitFor(() => {
       expect(screen.getByText("No repositories found.")).toBeInTheDocument();
     });
+  });
+
+  it("handles search parameters correctly", async () => {
+    const vcp = createMockVersionControlProvider();
+    const { repositoryService, organizationService } = getServices(vcp);
+    jest.spyOn(useServiceModule, "useServices").mockReturnValue({
+      repositoryService,
+      organizationService,
+    });
+
+    render(
+      <MemoryRouter
+        initialEntries={["/org?type=public&sort=updated&per_page=20&page=2"]}
+      >
+        <Routes>
+          <Route path=":organizationName" element={<RepositoryList />} />
+        </Routes>
+      </MemoryRouter>
+    );
+
+    await waitFor(() => {
+      expect(vcp.getRepositories).toHaveBeenCalledWith("org", {
+        type: "public",
+        sort: "updated",
+        per_page: 20,
+        page: 2,
+      });
+    });
+  });
+
+  it("updates search parameters when search terms change", async () => {
+    const vcp = createMockVersionControlProvider();
+    const { repositoryService, organizationService } = getServices(vcp);
+    jest.spyOn(useServiceModule, "useServices").mockReturnValue({
+      repositoryService,
+      organizationService,
+    });
+
+    render(
+      <MemoryRouter initialEntries={["/org"]}>
+        <Routes>
+          <Route path=":organizationName" element={<RepositoryList />} />
+        </Routes>
+      </MemoryRouter>
+    );
+
+    const typeSelect = await screen.findByLabelText("type");
+    fireEvent.change(typeSelect, { target: { value: "public" } });
+
+    await waitFor(
+      () => {
+        expect(vcp.getRepositories).toHaveBeenCalledWith(
+          "org",
+          expect.objectContaining({
+            type: "public",
+          })
+        );
+      },
+      { timeout: 1000 }
+    );
   });
 });

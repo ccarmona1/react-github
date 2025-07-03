@@ -16,11 +16,16 @@ const DEFAULT_TERMS: RepositorySearchTerms = {
 function getSearchTermsFromParams(
   params: URLSearchParams
 ): RepositorySearchTerms {
+  const type = params.get("type");
+  const sort = params.get("sort");
+  const perPage = params.get("per_page");
+  const page = params.get("page");
+
   return {
-    type: params.get("type") || DEFAULT_TERMS.type,
-    sort: params.get("sort") || DEFAULT_TERMS.sort,
-    per_page: Number(params.get("per_page")) || DEFAULT_TERMS.per_page,
-    page: Number(params.get("page")) || DEFAULT_TERMS.page,
+    type: type || DEFAULT_TERMS.type,
+    sort: sort || DEFAULT_TERMS.sort,
+    per_page: perPage ? Number(perPage) : DEFAULT_TERMS.per_page,
+    page: page ? Number(page) : DEFAULT_TERMS.page,
   };
 }
 
@@ -33,7 +38,15 @@ export const RepositoryList: FC = () => {
   const { repositoryService } = useServices();
 
   useEffect(() => {
+    if (!organizationName) {
+      navigate("");
+      return;
+    }
+  }, [organizationName, navigate]);
+
+  useEffect(() => {
     if (!organizationName) return;
+
     const getRepositories = async () => {
       try {
         const repos = await repositoryService.getRepositories(
@@ -44,10 +57,12 @@ export const RepositoryList: FC = () => {
       } catch (error) {
         // istanbul ignore next
         console.error("Failed to fetch repositories:", error);
+        setRepositories([]);
       }
     };
+
     getRepositories();
-  }, [setRepositories, organizationName, repositoryService, searchTerms]);
+  }, [organizationName, repositoryService, searchTerms]);
 
   const handleSearchChange = (terms: RepositorySearchTerms) => {
     const params: Record<string, string> = {};
@@ -57,11 +72,6 @@ export const RepositoryList: FC = () => {
     if (terms.page) params.page = String(terms.page);
     setSearchParams(params, { replace: true });
   };
-
-  if (!organizationName) {
-    navigate("");
-    return null;
-  }
 
   return (
     <div className="bg-white shadow-sm rounded-lg p-6">
@@ -79,7 +89,7 @@ export const RepositoryList: FC = () => {
         />
       </div>
 
-      {repositories.length > 0 ? (
+      {repositories.length > 0 && organizationName ? (
         <div className="grid gap-4">
           {repositories.map((repository: Repository) => (
             <div
