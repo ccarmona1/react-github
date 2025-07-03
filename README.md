@@ -60,14 +60,13 @@ yarn dev
 
 ## Running the App
 
-- `yarn dev` — Start the development server
+- `yarn preview` — Preview the production build - Open http://localhost:4173/ in your browser for preview
+- `yarn dev` — Start the development server - Open http://localhost:5173/ in your browser for preview
 - `yarn build` — Build for production
-- `yarn preview` — Preview the production build
 - `yarn test` — Run unit tests
 - `yarn test:coverage` — Run unit test coverage
 - `yarn lint` — Check code quality
 - `yarn lint:strict` — Strict linting (no warnings)
-- Open http://localhost:4173/ in your browser for preview
 
 ---
 
