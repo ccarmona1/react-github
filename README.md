@@ -151,10 +151,10 @@ graph TD
 ## Test Coverage Summary
 
 ```
-Statements   : 94.63% ( 247/261 )
+Statements   : 94.67% ( 249/263 )
 Branches     : 81.35% ( 96/118 )
 Functions    : 90.47% ( 57/63 )
-Lines        : 94.51% ( 224/237 )
+Lines        : 94.56% ( 226/239 )
 ```
 
 ---
