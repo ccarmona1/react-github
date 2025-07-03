@@ -52,7 +52,7 @@ export const RepositorySummary: FC = () => {
 
   return (
     repository && (
-      <Card className="mt-8 bg-gradient-to-br from-white via-sky-50 to-sky-100 shadow-2xl rounded-2xl border border-sky-100">
+      <Card className="card-2xl">
         <div className="mb-4">
           <Link
             to={`/${organizationName}`}
@@ -64,20 +64,20 @@ export const RepositorySummary: FC = () => {
         </div>
         <div className="flex flex-col md:flex-row md:items-center md:justify-between pb-4 mb-6 gap-4">
           <div>
-            <h1 className="text-3xl font-extrabold text-gray-900 break-words mb-1">
+            <h1 className="heading-1">
               {repository.name}
             </h1>
-            <p className="text-gray-600 text-base">
+            <p className="text-base-gray">
               {repository.description || "No description available"}
             </p>
           </div>
         </div>
         <div>
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <h2 className="heading-3">
             Repository details
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-base text-gray-700">
-            <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm">
+            <div className="card-section">
               <span className="font-medium text-gray-800 flex items-center">
                 <DynamicIcon
                   lib="go"
@@ -88,7 +88,7 @@ export const RepositorySummary: FC = () => {
               </span>
               <span className="truncate text-gray-600">{repository.id}</span>
             </div>
-            <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm">
+            <div className="card-section">
               <span className="font-medium text-gray-800 flex items-center">
                 <DynamicIcon
                   lib="go"
@@ -106,7 +106,7 @@ export const RepositorySummary: FC = () => {
                 {repository.httpUrl}
               </a>
             </div>
-            <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm">
+            <div className="card-section">
               <span className="font-medium text-gray-800 flex items-center">
                 <DynamicIcon
                   lib="go"
@@ -117,7 +117,7 @@ export const RepositorySummary: FC = () => {
               </span>
               <span className="text-gray-600">{repository.size} KB</span>
             </div>
-            <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm">
+            <div className="card-section">
               <span className="font-medium text-gray-800 flex items-center">
                 <DynamicIcon
                   lib="go"
@@ -128,7 +128,7 @@ export const RepositorySummary: FC = () => {
               </span>
               <span className="text-gray-600">{repository.openIssues}</span>
             </div>
-            <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm">
+            <div className="card-section">
               <span className="font-medium text-gray-800 flex items-center">
                 <DynamicIcon
                   lib="go"

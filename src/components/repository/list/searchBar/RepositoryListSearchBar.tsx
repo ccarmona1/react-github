@@ -35,7 +35,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
         <div>
           <label
             htmlFor="type-select"
-            className="block text-sm font-medium text-sky-700 mb-1"
+            className="label-base"
           >
             Type
           </label>
@@ -45,7 +45,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
             aria-label="type"
             value={searchTerms?.type || ""}
             onChange={handleSearchChange}
-            className="w-full h-10 px-3 py-2 border border-sky-200 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-400 transition-colors duration-200 appearance-none shadow-sm hover:border-sky-300 hover:shadow-md"
+            className="input-base"
           >
             <option value="">all</option>
             <option value="public">public</option>
@@ -59,7 +59,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
         <div>
           <label
             htmlFor="sort-select"
-            className="block text-sm font-medium text-sky-700 mb-1"
+            className="label-base"
           >
             Sort by
           </label>
@@ -69,7 +69,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
             aria-label="sort"
             value={searchTerms?.sort || ""}
             onChange={handleSearchChange}
-            className="w-full h-10 px-3 py-2 border border-sky-200 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-400 transition-colors duration-200 appearance-none shadow-sm hover:border-sky-300 hover:shadow-md"
+            className="input-base"
           >
             <option value="">created</option>
             <option value="updated">updated</option>
@@ -81,7 +81,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
         <div>
           <label
             htmlFor="per-page-input"
-            className="block text-sm font-medium text-sky-700 mb-1"
+            className="label-base"
           >
             Per page
           </label>
@@ -93,14 +93,14 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
             aria-label="per_page"
             value={searchTerms?.per_page}
             onChange={handleSearchChange}
-            className="w-full h-10 px-3 py-2 border border-sky-200 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-400 transition-colors duration-200 shadow-sm hover:border-sky-300 hover:shadow-md placeholder-gray-400"
+            className="input-base input-base-placeholder"
           />
         </div>
 
         <div>
           <label
             htmlFor="page-input"
-            className="block text-sm font-medium text-sky-700 mb-1"
+            className="label-base"
           >
             Page
           </label>
@@ -112,7 +112,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
             aria-label="page"
             value={searchTerms?.page}
             onChange={handleSearchChange}
-            className="w-full h-10 px-3 py-2 border border-sky-200 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-400 transition-colors duration-200 shadow-sm hover:border-sky-300 hover:shadow-md placeholder-gray-400"
+            className="input-base input-base-placeholder"
           />
         </div>
       </div>

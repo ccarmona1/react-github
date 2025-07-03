@@ -74,7 +74,7 @@ export const RepositoryList: FC = () => {
   };
 
   return (
-    <Card className="mt-8 bg-gradient-to-br from-white via-sky-50 to-sky-100 shadow-2xl rounded-2xl border border-sky-100">
+    <Card className="card-2xl">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
           <DynamicIcon
@@ -82,11 +82,9 @@ export const RepositoryList: FC = () => {
             icon="GoRepo"
             className="text-sky-500 text-2xl"
           />
-          <h2 className="text-2xl font-extrabold text-gray-900">
-            Repositories
-          </h2>
+          <h2 className="heading-2">Repositories</h2>
         </div>
-        <div className="text-sm text-sky-700 font-medium">
+        <div className="text-sm-sky">
           {repositories.length} repositories found
         </div>
       </div>
@@ -99,10 +97,7 @@ export const RepositoryList: FC = () => {
       {repositories.length > 0 && organizationName ? (
         <div className="grid gap-4">
           {repositories.map((repository: Repository) => (
-            <div
-              key={repository.id}
-              className="border border-sky-100 rounded-xl bg-white/80 backdrop-blur-sm px-4 py-3 shadow-sm hover:shadow-lg transition-shadow"
-            >
+            <div key={repository.id} className="card-section">
               <RepositoryLink
                 organizationName={organizationName}
                 repository={repository}
@@ -111,8 +106,8 @@ export const RepositoryList: FC = () => {
           ))}
         </div>
       ) : (
-        <div className="text-center py-8">
-          <div className="text-gray-500">No repositories found.</div>
+        <div className="text-center-empty">
+          <div className="text-gray-empty">No repositories found.</div>
         </div>
       )}
     </Card>

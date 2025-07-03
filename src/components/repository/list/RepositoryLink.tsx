@@ -19,10 +19,8 @@ export const RepositoryLink: FC<RepositoryLinkProps> = ({
     >
       <div className="flex items-start space-x-3">
         <div className="flex-1 min-w-0">
-          <h3 className="text-lg font-medium text-sky-600 hover:text-sky-800 truncate">
-            {repository.name}
-          </h3>
-          <p className="text-gray-700 text-sm mt-1">
+          <h3 className="text-lg-sky">{repository.name}</h3>
+          <p className="text-gray">
             {repository.description || "No description available"}
           </p>
         </div>
