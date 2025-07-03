@@ -49,3 +49,4 @@ yarn dev
 ## Future implementations:
 
 - Implementation of an AbortController to avoid sending the same request to GitHub without resolving a previous one.
+- Improving tailwindcss code with reusable components and modern configurations.
