@@ -20,6 +20,10 @@ html {
   @apply flex justify-between items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm;
 }
 
+.card-section-hover {
+  @apply focus-visible:ring-sky-50 hover:bg-sky-50 hover:shadow-lg
+}
+
 .card-section-center {
   @apply flex flex-col items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm;
 }
@@ -77,7 +81,7 @@ html {
 }
 
 .repository-link-container {
-  @apply flex items-start w-full gap-3 transition-colors rounded-md p-2 -m-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-100 hover:bg-sky-100 hover:shadow-lg;
+  @apply flex items-start w-full gap-3 transition-colors rounded-md p-2 -m-2 focus-visible:outline-none focus-visible:ring-2 ;
 }
 .repository-link-arrow {
   @apply w-5 h-5 text-gray-400;

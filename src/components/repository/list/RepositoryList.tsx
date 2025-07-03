@@ -105,7 +105,10 @@ export const RepositoryList: FC = () => {
           <>
             <div className="grid gap-4">
               {repositories.map((repository: Repository) => (
-                <div key={repository.id} className="card-section">
+                <div
+                  key={repository.id}
+                  className="card-section card-section-hover"
+                >
                   <RepositoryLink
                     organizationName={organizationName}
                     repository={repository}
