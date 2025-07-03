@@ -6,6 +6,7 @@ import { RepositoryLink } from "./RepositoryLink";
 import { RepositoryListSearchBar } from "./searchBar/RepositoryListSearchBar";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Card } from "../../common/Card";
+import { DynamicIcon } from "../../common/DynamicIcon";
 
 const DEFAULT_TERMS: RepositorySearchTerms = {
   type: "all",
@@ -21,7 +22,6 @@ function getSearchTermsFromParams(
   const sort = params.get("sort");
   const perPage = params.get("per_page");
   const page = params.get("page");
-
   return {
     type: type || DEFAULT_TERMS.type,
     sort: sort || DEFAULT_TERMS.sort,
@@ -50,7 +50,6 @@ export const RepositoryList: FC = () => {
 
   useEffect(() => {
     if (!organizationName) return;
-
     const getRepositories = async () => {
       try {
         const repos = await repositoryService.getRepositories(
@@ -58,12 +57,10 @@ export const RepositoryList: FC = () => {
           searchTerms
         );
         setRepositories(repos);
-      } catch (error) {
-        console.error("Failed to fetch repositories:", error);
+      } catch {
         setRepositories([]);
       }
     };
-
     getRepositories();
   }, [organizationName, repositoryService, searchTerms]);
 
@@ -77,10 +74,19 @@ export const RepositoryList: FC = () => {
   };
 
   return (
-    <Card>
+    <Card className="mt-8 bg-gradient-to-br from-white via-sky-50 to-sky-100 shadow-2xl rounded-2xl border border-sky-100">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-semibold text-gray-900">Repositories</h2>
-        <div className="text-sm text-gray-700">
+        <div className="flex items-center gap-2">
+          <DynamicIcon
+            lib="go"
+            icon="GoRepo"
+            className="text-sky-500 text-2xl"
+          />
+          <h2 className="text-2xl font-extrabold text-gray-900">
+            Repositories
+          </h2>
+        </div>
+        <div className="text-sm text-sky-700 font-medium">
           {repositories.length} repositories found
         </div>
       </div>
@@ -95,7 +101,7 @@ export const RepositoryList: FC = () => {
           {repositories.map((repository: Repository) => (
             <div
               key={repository.id}
-              className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+              className="border border-sky-100 rounded-xl bg-white/80 backdrop-blur-sm px-4 py-3 shadow-sm hover:shadow-lg transition-shadow"
             >
               <RepositoryLink
                 organizationName={organizationName}
@@ -106,7 +112,7 @@ export const RepositoryList: FC = () => {
         </div>
       ) : (
         <div className="text-center py-8">
-          <div className="text-gray-600">No repositories found.</div>
+          <div className="text-gray-500">No repositories found.</div>
         </div>
       )}
     </Card>

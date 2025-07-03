@@ -1,5 +1,6 @@
 import { useCallback, type FC } from "react";
 import type { RepositorySearchTerms } from "../../../../types/RepositorySearchTerms";
+import { DynamicIcon } from "../../../common/DynamicIcon";
 
 interface RepositoryListSearchBarProps {
   onSearchChange: (searchTerms: RepositorySearchTerms) => void;
@@ -23,15 +24,18 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
   );
 
   return (
-    <div className="bg-gray-50 rounded-lg p-4">
-      <h3 className="text-sm font-medium text-gray-900 mb-3">
-        Filter repositories
-      </h3>
+    <div className="bg-white/80 border border-sky-100 rounded-xl p-4 shadow-sm">
+      <div className="flex items-center gap-2 mb-3">
+        <DynamicIcon lib="go" icon="GoEye" className="text-sky-500 text-lg" />
+        <h3 className="text-base font-semibold text-gray-900">
+          Filter repositories
+        </h3>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <div>
           <label
             htmlFor="type-select"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-sky-700 mb-1"
           >
             Type
           </label>
@@ -41,7 +45,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
             aria-label="type"
             value={searchTerms?.type || ""}
             onChange={handleSearchChange}
-            className="w-full h-10 px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 appearance-none shadow-sm hover:border-blue-400 hover:shadow-md"
+            className="w-full h-10 px-3 py-2 border border-sky-200 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-400 transition-colors duration-200 appearance-none shadow-sm hover:border-sky-300 hover:shadow-md"
           >
             <option value="">all</option>
             <option value="public">public</option>
@@ -55,7 +59,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
         <div>
           <label
             htmlFor="sort-select"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-sky-700 mb-1"
           >
             Sort by
           </label>
@@ -65,7 +69,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
             aria-label="sort"
             value={searchTerms?.sort || ""}
             onChange={handleSearchChange}
-            className="w-full h-10 px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 appearance-none shadow-sm hover:border-blue-400 hover:shadow-md"
+            className="w-full h-10 px-3 py-2 border border-sky-200 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-400 transition-colors duration-200 appearance-none shadow-sm hover:border-sky-300 hover:shadow-md"
           >
             <option value="">created</option>
             <option value="updated">updated</option>
@@ -77,7 +81,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
         <div>
           <label
             htmlFor="per-page-input"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-sky-700 mb-1"
           >
             Per page
           </label>
@@ -89,14 +93,14 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
             aria-label="per_page"
             value={searchTerms?.per_page}
             onChange={handleSearchChange}
-            className="w-full h-10 px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 shadow-sm hover:border-blue-400 hover:shadow-md placeholder-gray-400"
+            className="w-full h-10 px-3 py-2 border border-sky-200 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-400 transition-colors duration-200 shadow-sm hover:border-sky-300 hover:shadow-md placeholder-gray-400"
           />
         </div>
 
         <div>
           <label
             htmlFor="page-input"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-sky-700 mb-1"
           >
             Page
           </label>
@@ -108,7 +112,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
             aria-label="page"
             value={searchTerms?.page}
             onChange={handleSearchChange}
-            className="w-full h-10 px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 shadow-sm hover:border-blue-400 hover:shadow-md placeholder-gray-400"
+            className="w-full h-10 px-3 py-2 border border-sky-200 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-400 transition-colors duration-200 shadow-sm hover:border-sky-300 hover:shadow-md placeholder-gray-400"
           />
         </div>
       </div>
