@@ -118,7 +118,7 @@ export const RepositoryList: FC = () => {
             </div>
             <div className="flex justify-center gap-4 mt-8">
               <button
-                className="pagination-btn"
+                className="btn-base"
                 onClick={() =>
                   handleSearchChange({
                     ...searchTerms,
@@ -131,18 +131,14 @@ export const RepositoryList: FC = () => {
                 Previous
               </button>
               <button
-                className="pagination-btn"
+                className="btn-base"
                 onClick={() =>
                   handleSearchChange({
                     ...searchTerms,
                     page: (searchTerms.page || 1) + 1,
                   })
                 }
-                disabled={
-                  !searchTerms.per_page ||
-                  repositories.length < searchTerms.per_page ||
-                  loading
-                }
+                disabled={loading}
                 aria-label="Next page"
               >
                 Next

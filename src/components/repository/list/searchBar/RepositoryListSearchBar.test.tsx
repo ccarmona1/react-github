@@ -19,10 +19,10 @@ describe("RepositoryListSearchBar", () => {
         searchTerms={defaultTerms}
       />
     );
-    expect(screen.getByLabelText("type")).toBeInTheDocument();
-    expect(screen.getByLabelText("sort")).toBeInTheDocument();
-    expect(screen.getByLabelText("per_page")).toBeInTheDocument();
-    expect(screen.getByLabelText("page")).toBeInTheDocument();
+    expect(screen.getByLabelText("Type")).toBeInTheDocument();
+    expect(screen.getByLabelText("Sort by")).toBeInTheDocument();
+    expect(screen.getByLabelText("Page size")).toBeInTheDocument();
+    expect(screen.getByLabelText("Page number")).toBeInTheDocument();
   });
 
   it("calls onSearchChange when type is changed", () => {
@@ -33,7 +33,7 @@ describe("RepositoryListSearchBar", () => {
         searchTerms={defaultTerms}
       />
     );
-    fireEvent.change(screen.getByLabelText("type"), {
+    fireEvent.change(screen.getByLabelText("Type"), {
       target: { name: "type", value: "public" },
     });
     expect(onSearchChange).toHaveBeenCalledWith({
@@ -50,7 +50,7 @@ describe("RepositoryListSearchBar", () => {
         searchTerms={defaultTerms}
       />
     );
-    fireEvent.change(screen.getByLabelText("sort"), {
+    fireEvent.change(screen.getByLabelText("Sort by"), {
       target: { name: "sort", value: "updated" },
     });
     expect(onSearchChange).toHaveBeenCalledWith({
@@ -67,7 +67,7 @@ describe("RepositoryListSearchBar", () => {
         searchTerms={defaultTerms}
       />
     );
-    fireEvent.change(screen.getByLabelText("per_page"), {
+    fireEvent.change(screen.getByLabelText("Page size"), {
       target: { name: "per_page", value: 5 },
     });
     expect(onSearchChange).toHaveBeenCalledWith({
@@ -84,7 +84,7 @@ describe("RepositoryListSearchBar", () => {
         searchTerms={defaultTerms}
       />
     );
-    fireEvent.change(screen.getByLabelText("page"), {
+    fireEvent.change(screen.getByLabelText("Page number"), {
       target: { name: "page", value: 2 },
     });
     expect(onSearchChange).toHaveBeenCalledWith({ ...defaultTerms, page: 2 });

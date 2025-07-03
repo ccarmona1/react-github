@@ -151,7 +151,7 @@ describe("RepositoryList", () => {
       </MemoryRouter>
     );
 
-    const typeSelect = await screen.findByLabelText("type");
+    const typeSelect = await screen.findByLabelText("Type");
     fireEvent.change(typeSelect, { target: { value: "public" } });
 
     await waitFor(

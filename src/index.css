@@ -111,6 +111,26 @@ html {
   @apply text-sky-600 hover:underline break-all text-right focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400;
 }
 
-.pagination-btn {
+.btn-base {
   @apply px-4 py-2 rounded bg-sky-100 text-sky-700 font-medium cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.hide-number-spin::-webkit-outer-spin-button,
+.hide-number-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.hide-number-spin[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.numericinput-arrow-btn {
+  @apply h-4 w-6 flex items-center justify-center p-0.5 rounded bg-sky-100 text-sky-700 hover:bg-sky-200 focus:outline-none;
+}
+.numericinput-arrow {
+  @apply w-3.5 h-3.5;
+}
+.numericinput-arrow-group {
+  @apply absolute right-1.5 top-1/2 -translate-y-1/2 flex flex-col gap-1;
 }

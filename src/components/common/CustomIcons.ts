@@ -7,6 +7,8 @@ import {
   GoPeople,
   GoPerson,
   GoChevronRight,
+  GoChevronUp,
+  GoChevronDown,
 } from "react-icons/go";
 import {
   SiJavascript,
@@ -40,6 +42,8 @@ export const customIcons = {
     GoPeople,
     GoPerson,
     GoChevronRight,
+    GoChevronUp,
+    GoChevronDown,
   },
   si: {
     SiJavascript,
