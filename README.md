@@ -151,7 +151,6 @@ graph TD
 - Add AbortController to prevent duplicate GitHub requests
 - Refactor TailwindCSS with more reusable components
 - Add E2E tests (Cypress or Playwright)
-- Enhance loading and error states
 
 ---
 
