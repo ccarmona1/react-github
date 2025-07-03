@@ -8,6 +8,7 @@ Config files must be small and simple, with no unnecessary options.
 
 For common dev:
 
+- Use vite
 - Use yarn
 - Use jest
 - Don't add comments
@@ -24,7 +25,6 @@ For Frontend:
 For Styling:
 
 - Make sure to use tailwindcss for styling
-- Create the css files for each component and import them in the component
 - Avoid inline styles
 - Use tailwindcss for responsive design
 - The app must be responsive and work on mobile devices

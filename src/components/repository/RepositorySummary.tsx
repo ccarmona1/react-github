@@ -2,6 +2,7 @@ import { useEffect, useState, type FC } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useServices } from "../../hooks/organization/useService";
 import type { Repository } from "../../types/Repository";
+import { Card } from "../common/Card";
 
 export const RepositorySummary: FC = () => {
   const { organizationName, repositoryName } = useParams();
@@ -33,7 +34,7 @@ export const RepositorySummary: FC = () => {
 
   return (
     repository && (
-      <div className="bg-white shadow-sm rounded-lg p-6">
+      <Card>
         <div className="mb-4">
           <Link
             to={`/${organizationName}`}
@@ -55,7 +56,6 @@ export const RepositorySummary: FC = () => {
             Back to repositories
           </Link>
         </div>
-
         <div className="border-b border-gray-200 pb-4 mb-6">
           <h1 className="text-2xl font-bold text-gray-900">
             {repository.name}
@@ -64,7 +64,6 @@ export const RepositorySummary: FC = () => {
             {repository.description || "No description available"}
           </p>
         </div>
-
         <div className="space-y-4">
           <div className="bg-gray-50 rounded-lg p-4">
             <h2 className="text-lg font-semibold text-gray-900 mb-2">
@@ -80,7 +79,7 @@ export const RepositorySummary: FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Card>
     )
   );
 };

@@ -5,6 +5,7 @@ import type { RepositorySearchTerms } from "../../types/RepositorySearchTerms";
 import { RepositoryLink } from "./RepositoryLink";
 import { RepositoryListSearchBar } from "./searchBar/RepositoryListSearchBar";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { Card } from "../common/Card";
 
 const DEFAULT_TERMS: RepositorySearchTerms = {
   type: "all",
@@ -74,21 +75,19 @@ export const RepositoryList: FC = () => {
   };
 
   return (
-    <div className="bg-white shadow-sm rounded-lg p-6">
+    <Card>
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-semibold text-gray-900">Repositories</h2>
         <div className="text-sm text-gray-500">
           {repositories.length} repositories found
         </div>
       </div>
-
       <div className="mb-6">
         <RepositoryListSearchBar
           onSearchChange={handleSearchChange}
           searchTerms={searchTerms}
         />
       </div>
-
       {repositories.length > 0 && organizationName ? (
         <div className="grid gap-4">
           {repositories.map((repository: Repository) => (
@@ -108,6 +107,6 @@ export const RepositoryList: FC = () => {
           <div className="text-gray-500">No repositories found.</div>
         </div>
       )}
-    </div>
+    </Card>
   );
 };

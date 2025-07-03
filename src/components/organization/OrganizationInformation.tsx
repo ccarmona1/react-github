@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import type { Organization } from "../../types/Organization";
+import { Card } from "../common/Card";
 
 interface OrganizationInformationProps {
   organization: Organization;
@@ -9,10 +10,14 @@ export const OrganizationInformation: FC<OrganizationInformationProps> = ({
   organization,
 }) => {
   return (
-    <div className="bg-white shadow-sm rounded-lg p-6 mb-6">
+    <Card>
       <div className="flex items-center space-x-4">
         <img
-          src={organization.avatarUrl}
+          src={
+            organization.avatarUrl.length > 0
+              ? organization.avatarUrl
+              : "not-found.png"
+          }
           alt={`${organization.login} avatar`}
           className="w-16 h-16 rounded-full"
         />
@@ -39,6 +44,6 @@ export const OrganizationInformation: FC<OrganizationInformationProps> = ({
           <span className="ml-1">following</span>
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
