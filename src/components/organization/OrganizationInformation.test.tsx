@@ -24,11 +24,11 @@ describe("OrganizationInformation", () => {
     expect(screen.getByText("test-org")).toBeInTheDocument();
     expect(screen.getByText("A test organization")).toBeInTheDocument();
     expect(screen.getByText("100")).toBeInTheDocument();
-    expect(screen.getByText("repositories")).toBeInTheDocument();
+    expect(screen.getByText("Repositories")).toBeInTheDocument();
     expect(screen.getByText("500")).toBeInTheDocument();
-    expect(screen.getByText("followers")).toBeInTheDocument();
+    expect(screen.getByText("Followers")).toBeInTheDocument();
     expect(screen.getByText("50")).toBeInTheDocument();
-    expect(screen.getByText("following")).toBeInTheDocument();
+    expect(screen.getByText("Following")).toBeInTheDocument();
     expect(screen.getByAltText("test-org avatar")).toBeInTheDocument();
   });
 

@@ -1,11 +1,11 @@
 import { useEffect, useState, useMemo, type FC } from "react";
-import { useServices } from "../../hooks/organization/useService";
-import type { Repository } from "../../types/Repository";
-import type { RepositorySearchTerms } from "../../types/RepositorySearchTerms";
+import { useServices } from "../../../hooks/organization/useService";
+import type { Repository } from "../../../types/Repository";
+import type { RepositorySearchTerms } from "../../../types/RepositorySearchTerms";
 import { RepositoryLink } from "./RepositoryLink";
-import { RepositoryListSearchBar } from "./searchBar/RepositoryListSearchBar";
+import { RepositoryListSearchBar } from "../searchBar/RepositoryListSearchBar";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { Card } from "../common/Card";
+import { Card } from "../../common/Card";
 
 const DEFAULT_TERMS: RepositorySearchTerms = {
   type: "all",
@@ -34,7 +34,10 @@ export const RepositoryList: FC = () => {
   const { organizationName } = useParams();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchTerms = useMemo(() => getSearchTermsFromParams(searchParams), [searchParams]);
+  const searchTerms = useMemo(
+    () => getSearchTermsFromParams(searchParams),
+    [searchParams]
+  );
   const [repositories, setRepositories] = useState<Repository[]>([]);
   const { repositoryService } = useServices();
 
@@ -56,7 +59,6 @@ export const RepositoryList: FC = () => {
         );
         setRepositories(repos);
       } catch (error) {
-        // istanbul ignore next
         console.error("Failed to fetch repositories:", error);
         setRepositories([]);
       }
@@ -78,7 +80,7 @@ export const RepositoryList: FC = () => {
     <Card>
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-semibold text-gray-900">Repositories</h2>
-        <div className="text-sm text-gray-500">
+        <div className="text-sm text-gray-700">
           {repositories.length} repositories found
         </div>
       </div>
@@ -104,7 +106,7 @@ export const RepositoryList: FC = () => {
         </div>
       ) : (
         <div className="text-center py-8">
-          <div className="text-gray-500">No repositories found.</div>
+          <div className="text-gray-600">No repositories found.</div>
         </div>
       )}
     </Card>

@@ -1,6 +1,4 @@
-import * as SiIcons from "react-icons/si";
-
-export const languageIconMap: Record<string, keyof typeof SiIcons> = {
+export const languageIconMap: Record<string, string> = {
   javascript: "SiJavascript",
   typescript: "SiTypescript",
   python: "SiPython",
@@ -20,5 +18,4 @@ export const languageIconMap: Record<string, keyof typeof SiIcons> = {
   scala: "SiScala",
   perl: "SiPerl",
   r: "SiR",
-  // add more as needed
 };

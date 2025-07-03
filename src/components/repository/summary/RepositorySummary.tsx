@@ -1,17 +1,10 @@
 import { useEffect, useState, type FC } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useServices } from "../../hooks/organization/useService";
-import type { Repository } from "../../types/Repository";
-import { Card } from "../common/Card";
-import {
-  GoRepo,
-  GoLink,
-  GoDatabase,
-  GoIssueOpened,
-  GoEye,
-} from "react-icons/go";
-import { languageIconMap } from "../../utils/languageIconMap";
-import * as SiIcons from "react-icons/si";
+import { useServices } from "../../../hooks/organization/useService";
+import type { Repository } from "../../../types/Repository";
+import { languageIconMap } from "../../../utils/languageIconMap";
+import { Card } from "../../common/Card";
+import { DynamicIcon } from "../../common/DynamicIcon";
 
 export const RepositorySummary: FC = () => {
   const { organizationName, repositoryName } = useParams();
@@ -51,13 +44,13 @@ export const RepositorySummary: FC = () => {
 
   return (
     repository && (
-      <Card className="mt-8 bg-gradient-to-br from-white via-blue-50 to-blue-100 shadow-2xl rounded-2xl border border-gray-200">
+      <Card className="mt-8 bg-gradient-to-br from-white via-sky-50 to-sky-100 shadow-2xl rounded-2xl border border-sky-100">
         <div className="mb-4">
           <Link
             to={`/${organizationName}`}
-            className="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors"
+            className="inline-flex items-center text-sky-600 hover:text-sky-800 text-sm font-medium transition-colors"
           >
-            <GoRepo className="mr-1" />
+            <DynamicIcon lib="go" icon="GoRepo" className="mr-1" />
             Back to repositories
           </Link>
         </div>
@@ -76,44 +69,44 @@ export const RepositorySummary: FC = () => {
             Repository details
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-base text-gray-700">
-            <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-blue-100 rounded-lg px-4 py-3 shadow-sm">
+            <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm">
               <span className="font-medium text-gray-800 flex items-center">
-                <GoRepo className="mr-1" />
+                <DynamicIcon lib="go" icon="GoRepo" className="mr-1 text-sky-400" />
                 ID
               </span>
               <span className="truncate text-gray-600">{repository.id}</span>
             </div>
-            <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-blue-100 rounded-lg px-4 py-3 shadow-sm">
+            <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm">
               <span className="font-medium text-gray-800 flex items-center">
-                <GoLink className="mr-1" />
+                <DynamicIcon lib="go" icon="GoLink" className="mr-1 text-sky-400" />
                 URL
               </span>
               <a
                 href={repository.httpUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 hover:underline break-all text-right"
+                className="text-sky-600 hover:underline break-all text-right focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
               >
                 {repository.httpUrl}
               </a>
             </div>
-            <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-blue-100 rounded-lg px-4 py-3 shadow-sm">
+            <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm">
               <span className="font-medium text-gray-800 flex items-center">
-                <GoDatabase className="mr-1" />
+                <DynamicIcon lib="go" icon="GoDatabase" className="mr-1 text-sky-400" />
                 Size
               </span>
               <span className="text-gray-600">{repository.size} KB</span>
             </div>
-            <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-blue-100 rounded-lg px-4 py-3 shadow-sm">
+            <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm">
               <span className="font-medium text-gray-800 flex items-center">
-                <GoIssueOpened className="mr-1" />
+                <DynamicIcon lib="go" icon="GoIssueOpened" className="mr-1 text-sky-400" />
                 Open issues
               </span>
               <span className="text-gray-600">{repository.openIssues}</span>
             </div>
-            <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-blue-100 rounded-lg px-4 py-3 shadow-sm">
+            <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm">
               <span className="font-medium text-gray-800 flex items-center">
-                <GoEye className="mr-1" />
+                <DynamicIcon lib="go" icon="GoEye" className="mr-1 text-sky-400" />
                 Watchers
               </span>
               <span className="text-gray-600">{repository.watchers}</span>
@@ -125,13 +118,19 @@ export const RepositorySummary: FC = () => {
               <ul className="flex flex-wrap gap-2 mt-2">
                 {Object.entries(languages).map(([lang, size]) => {
                   const key = lang.toLowerCase().replace(/[^a-z0-9]/g, "");
-                  const Icon = SiIcons[languageIconMap[key] || ""];
+                  const iconName = languageIconMap[key];
                   return (
                     <li
                       key={lang}
-                      className="px-3 py-1 bg-blue-100 rounded-full text-xs font-medium text-blue-900 shadow flex items-center gap-2"
+                      className="px-3 py-1 bg-sky-100 rounded-full text-xs font-medium text-sky-900 shadow flex items-center gap-2"
                     >
-                      {Icon && <Icon className="text-base" />}
+                      {iconName && (
+                        <DynamicIcon
+                          lib="si"
+                          icon={iconName}
+                          className="text-base"
+                        />
+                      )}
                       {lang}: {((size * 100) / repository.size).toFixed(1)}%
                     </li>
                   );

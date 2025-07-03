@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { RepositoryLink } from "./RepositoryLink";
-import type { Repository } from "../../types/Repository";
+import type { Repository } from "../../../types/Repository";
 
 describe("RepositoryLink", () => {
   const repository: Repository = {

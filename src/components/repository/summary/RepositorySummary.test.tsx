@@ -1,10 +1,10 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { RepositorySummary } from "./RepositorySummary";
-import * as useServiceModule from "../../hooks/organization/useService";
-import { RepositoryService } from "../../services/repository/RepositoryService";
-import { OrganizationService } from "../../services/organization/OrganizationService";
-import type { VersionControlClient } from "../../providers/VersionControlClient";
+import * as useServiceModule from "../../../hooks/organization/useService";
+import type { VersionControlClient } from "../../../providers/VersionControlClient";
+import { OrganizationService } from "../../../services/organization/OrganizationService";
+import { RepositoryService } from "../../../services/repository/RepositoryService";
 
 const mockRepository = {
   id: 1,

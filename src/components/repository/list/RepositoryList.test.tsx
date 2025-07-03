@@ -1,10 +1,10 @@
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { RepositoryList } from "./RepositoryList";
-import * as useServiceModule from "../../hooks/organization/useService";
-import { RepositoryService } from "../../services/repository/RepositoryService";
-import { OrganizationService } from "../../services/organization/OrganizationService";
-import type { VersionControlClient } from "../../providers/VersionControlClient";
+import * as useServiceModule from "../../../hooks/organization/useService";
+import { RepositoryService } from "../../../services/repository/RepositoryService";
+import { OrganizationService } from "../../../services/organization/OrganizationService";
+import type { VersionControlClient } from "../../../providers/VersionControlClient";
 
 describe("RepositoryList", () => {
   afterEach(jest.clearAllMocks);

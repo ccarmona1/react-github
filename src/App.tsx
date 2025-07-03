@@ -1,8 +1,8 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { OrganizationView } from "./components/organization/Organization";
 import { ServicesProvider } from "./hooks/organization/ServicesProvider";
-import { RepositorySummary } from "./components/repository/RepositorySummary";
-import { RepositoryList } from "./components/repository/RepositoryList";
+import { RepositoryList } from "./components/repository/list/RepositoryList";
+import { RepositorySummary } from "./components/repository/summary/RepositorySummary";
 
 function App() {
   return (

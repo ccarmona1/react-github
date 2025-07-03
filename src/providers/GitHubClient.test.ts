@@ -135,11 +135,19 @@ describe("GitHubClient", () => {
           id: "456",
           name: "repo1",
           description: "Test repo 1",
+          httpUrl: undefined,
+          size: 0,
+          openIssues: 0,
+          watchers: 0,
         },
         {
           id: "789",
           name: "repo2",
           description: "Test repo 2",
+          httpUrl: undefined,
+          size: 0,
+          openIssues: 0,
+          watchers: 0,
         },
       ]);
     });
@@ -168,6 +176,10 @@ describe("GitHubClient", () => {
           id: "456",
           name: "repo1",
           description: undefined,
+          httpUrl: undefined,
+          size: 0,
+          openIssues: 0,
+          watchers: 0,
         },
       ]);
     });
@@ -191,6 +203,10 @@ describe("GitHubClient", () => {
         id: "456",
         name: "repo1",
         description: "Test repo 1",
+        httpUrl: undefined,
+        size: undefined,
+        openIssues: undefined,
+        watchers: undefined,
       });
     });
 
@@ -210,6 +226,10 @@ describe("GitHubClient", () => {
         id: "456",
         name: "repo1",
         description: undefined,
+        httpUrl: undefined,
+        size: undefined,
+        openIssues: undefined,
+        watchers: undefined,
       });
     });
   });
