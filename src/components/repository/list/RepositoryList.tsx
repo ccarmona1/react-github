@@ -79,7 +79,7 @@ export const RepositoryList: FC = () => {
 
   return (
     <Card className="card-2xl">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
         <div className="flex items-center gap-2">
           <DynamicIcon
             lib="go"
@@ -88,7 +88,7 @@ export const RepositoryList: FC = () => {
           />
           <h2 className="heading-2">Repositories</h2>
         </div>
-        <div className="text-sm-sky">
+        <div className="text-sm-sky break-words max-w-full text-right truncate sm:max-w-xs md:max-w-sm">
           {repositories.length} repositories found
         </div>
       </div>
@@ -103,11 +103,11 @@ export const RepositoryList: FC = () => {
           <LoadingSpinner />
         ) : (
           <>
-            <div className="grid gap-4">
+            <div className="grid w-full grid-cols-1 gap-4">
               {repositories.map((repository: Repository) => (
                 <div
                   key={repository.id}
-                  className="card-section card-section-hover"
+                  className="card-section card-section-hover w-full h-full"
                 >
                   <RepositoryLink
                     organizationName={organizationName}
@@ -116,33 +116,37 @@ export const RepositoryList: FC = () => {
                 </div>
               ))}
             </div>
-            <div className="flex justify-center gap-4 mt-8">
-              <button
-                className="btn-base"
-                onClick={() =>
-                  handleSearchChange({
-                    ...searchTerms,
-                    page: (searchTerms.page || 1) - 1,
-                  })
-                }
-                disabled={!searchTerms.page || searchTerms.page <= 1 || loading}
-                aria-label="Previous page"
-              >
-                Previous
-              </button>
-              <button
-                className="btn-base"
-                onClick={() =>
-                  handleSearchChange({
-                    ...searchTerms,
-                    page: (searchTerms.page || 1) + 1,
-                  })
-                }
-                disabled={loading}
-                aria-label="Next page"
-              >
-                Next
-              </button>
+            <div className="flex justify-center w-full">
+              <Card className="w-fit flex flex-row gap-4 p-2">
+                <button
+                  className="btn-base"
+                  onClick={() =>
+                    handleSearchChange({
+                      ...searchTerms,
+                      page: (searchTerms.page || 1) - 1,
+                    })
+                  }
+                  disabled={
+                    !searchTerms.page || searchTerms.page <= 1 || loading
+                  }
+                  aria-label="Previous page"
+                >
+                  Previous
+                </button>
+                <button
+                  className="btn-base"
+                  onClick={() =>
+                    handleSearchChange({
+                      ...searchTerms,
+                      page: (searchTerms.page || 1) + 1,
+                    })
+                  }
+                  disabled={loading}
+                  aria-label="Next page"
+                >
+                  Next
+                </button>
+              </Card>
             </div>
           </>
         )

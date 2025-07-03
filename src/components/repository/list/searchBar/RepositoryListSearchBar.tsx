@@ -36,19 +36,18 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
   }, [onSearchChange]);
 
   return (
-    <div className="repository-searchbar-container">
+    <div className="repository-searchbar-container w-full">
       <div className="flex items-center gap-2 mb-3">
         <DynamicIcon lib="go" icon="GoEye" className="text-sky-500 text-lg" />
         <h3 className="repository-searchbar-title">Filter repositories</h3>
       </div>
-      <div className="flex flex-col lg:flex-row lg:items-center gap-4 w-full">
+      <div className="w-full">
         <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2 w-full items-end"
-          style={{ gridTemplateColumns: "1fr 1fr 1fr 1fr 120px" }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 w-full items-end"
           role="search"
           aria-label="Repository filters"
         >
-          <div>
+          <div className="w-full">
             <label htmlFor="type-select" className="label-base">
               Type
             </label>
@@ -58,7 +57,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
               aria-label="Type"
               value={searchTerms?.type || ""}
               onChange={handleSearchChange}
-              className="input-base"
+              className="input-base w-full"
             >
               <option value="">all</option>
               <option value="public">public</option>
@@ -69,7 +68,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
             </select>
           </div>
 
-          <div>
+          <div className="w-full">
             <label htmlFor="sort-select" className="label-base">
               Sort by
             </label>
@@ -79,7 +78,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
               aria-label="Sort by"
               value={searchTerms?.sort || ""}
               onChange={handleSearchChange}
-              className="input-base"
+              className="input-base w-full"
             >
               <option value="">created</option>
               <option value="updated">updated</option>
@@ -88,7 +87,7 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
             </select>
           </div>
 
-          <div>
+          <div className="w-full">
             <NumericInput
               id="per-page-input"
               name="per_page"
@@ -99,10 +98,11 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
                 onSearchChange({ ...searchTerms, per_page: val })
               }
               ariaLabel="Page size"
+              className="w-full"
             />
           </div>
 
-          <div>
+          <div className="w-full">
             <NumericInput
               id="page-input"
               name="page"
@@ -111,15 +111,15 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
               value={searchTerms?.page ?? 1}
               onChange={(val) => onSearchChange({ ...searchTerms, page: val })}
               ariaLabel="Page number"
+              className="w-full"
             />
           </div>
 
-          <div className="flex flex-col items-center justify-end h-full">
-            <label className="invisible block h-0">Reset</label>
+          <div className="flex items-end w-full h-full">
             <button
               type="button"
               onClick={handleReset}
-              className="btn-base"
+              className="btn-base w-full"
               aria-label="Reset filters"
             >
               Reset

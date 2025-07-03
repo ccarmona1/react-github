@@ -20,9 +20,6 @@ html {
   @apply flex justify-between items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm;
 }
 
-.card-section-hover {
-  @apply focus-visible:ring-sky-50 hover:bg-sky-50 hover:shadow-lg
-}
 
 .card-section-center {
   @apply flex flex-col items-center bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-4 py-3 shadow-sm;
@@ -81,8 +78,9 @@ html {
 }
 
 .repository-link-container {
-  @apply flex items-start w-full gap-3 transition-colors rounded-md p-2 -m-2 focus-visible:outline-none focus-visible:ring-2 ;
+  @apply flex items-start w-full gap-3 transition-colors rounded-md p-2 -m-2 focus-visible:outline-none focus-visible:ring-2;
 }
+
 .repository-link-arrow {
   @apply w-5 h-5 text-gray-400;
 }
@@ -112,7 +110,7 @@ html {
 }
 
 .btn-base {
-  @apply px-4 py-2 rounded bg-sky-100 text-sky-700 font-medium cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
+  @apply px-4 py-2 rounded bg-sky-100 text-sky-700 font-medium cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed hover:bg-sky-200 hover:text-sky-900 transition-colors;
 }
 
 .hide-number-spin::-webkit-outer-spin-button,

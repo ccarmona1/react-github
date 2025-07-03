@@ -56,7 +56,9 @@ export const RepositorySummary: FC = () => {
         <div className="mb-4">
           <Link
             to={`/${organizationName}`}
-            className="repository-summary-back-link"
+            className="btn-base flex items-center gap-2 w-fit"
+            role="button"
+            tabIndex={0}
           >
             <DynamicIcon
               lib="go"

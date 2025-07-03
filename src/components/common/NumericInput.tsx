@@ -61,6 +61,9 @@ export const NumericInput: FC<NumericInputProps> = ({
           value={value}
           onChange={handleInputChange}
           className={`${inputClassName} hide-number-spin`}
+          inputMode="numeric"
+          pattern="[0-9]*"
+          style={{ MozAppearance: "textfield" }}
         />
         <div className="numericinput-arrow-group">
           <button
