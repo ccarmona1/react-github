@@ -20,7 +20,7 @@ export const OrganizationInformation: FC<OrganizationInformationProps> = ({
               : "not-found.png"
           }
           alt={`${organization.login} avatar`}
-          className="w-20 h-20 rounded-full border-4 border-sky-100 shadow-md bg-white object-cover"
+          className="organization-avatar"
         />
         <div>
           <h1 className="heading-1">{organization.login}</h1>
@@ -31,21 +31,21 @@ export const OrganizationInformation: FC<OrganizationInformationProps> = ({
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-base text-gray-700 mt-6">
         <div className="card-section-center">
-          <span className="font-semibold text-sky-800 text-lg flex items-center gap-1">
+          <span className="organization-highlight">
             <DynamicIcon lib="go" icon="GoRepo" className="text-sky-400" />
             {organization.publicRepos}
           </span>
           <span className="text-xs-gray">Repositories</span>
         </div>
         <div className="card-section-center">
-          <span className="font-semibold text-sky-800 text-lg flex items-center gap-1">
+          <span className="organization-highlight">
             <DynamicIcon lib="go" icon="GoPeople" className="text-sky-400" />
             {organization.followers}
           </span>
           <span className="text-xs-gray">Followers</span>
         </div>
         <div className="card-section-center">
-          <span className="font-semibold text-sky-800 text-lg flex items-center gap-1">
+          <span className="organization-highlight">
             <DynamicIcon lib="go" icon="GoPerson" className="text-sky-400" />
             {organization.following}
           </span>

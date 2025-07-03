@@ -56,9 +56,13 @@ export const RepositorySummary: FC = () => {
         <div className="mb-4">
           <Link
             to={`/${organizationName}`}
-            className="inline-flex items-center text-sky-600 hover:text-sky-800 text-sm font-medium transition-colors"
+            className="repository-summary-back-link"
           >
-            <DynamicIcon lib="go" icon="GoRepo" className="mr-1" />
+            <DynamicIcon
+              lib="go"
+              icon="GoRepo"
+              className="repository-summary-link-icon"
+            />
             Back to repositories
           </Link>
         </div>
@@ -78,7 +82,7 @@ export const RepositorySummary: FC = () => {
                 <DynamicIcon
                   lib="go"
                   icon="GoRepo"
-                  className="mr-1 text-sky-400"
+                  className="repository-summary-link-icon"
                 />
                 ID
               </span>
@@ -89,7 +93,7 @@ export const RepositorySummary: FC = () => {
                 <DynamicIcon
                   lib="go"
                   icon="GoLink"
-                  className="mr-1 text-sky-400"
+                  className="repository-summary-link-icon"
                 />
                 URL
               </span>
@@ -97,7 +101,7 @@ export const RepositorySummary: FC = () => {
                 href={repository.httpUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sky-600 hover:underline break-all text-right focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+                className="repository-summary-external-link"
               >
                 {repository.httpUrl}
               </a>
@@ -107,7 +111,7 @@ export const RepositorySummary: FC = () => {
                 <DynamicIcon
                   lib="go"
                   icon="GoDatabase"
-                  className="mr-1 text-sky-400"
+                  className="repository-summary-link-icon"
                 />
                 Size
               </span>

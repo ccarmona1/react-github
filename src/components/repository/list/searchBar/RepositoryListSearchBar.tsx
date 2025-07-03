@@ -24,12 +24,10 @@ export const RepositoryListSearchBar: FC<RepositoryListSearchBarProps> = ({
   );
 
   return (
-    <div className="bg-white/80 border border-sky-100 rounded-xl p-4 shadow-sm">
+    <div className="repository-searchbar-container">
       <div className="flex items-center gap-2 mb-3">
         <DynamicIcon lib="go" icon="GoEye" className="text-sky-500 text-lg" />
-        <h3 className="text-base font-semibold text-gray-900">
-          Filter repositories
-        </h3>
+        <h3 className="repository-searchbar-title">Filter repositories</h3>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <div>

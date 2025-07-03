@@ -75,3 +75,34 @@ html {
 .text-gray-empty {
   @apply text-gray-500;
 }
+
+.repository-link-container {
+  @apply flex items-start w-full gap-3 transition-colors rounded-md p-2 -m-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-100 hover:bg-sky-100 hover:shadow-lg;
+}
+.repository-link-arrow {
+  @apply w-5 h-5 text-gray-400;
+}
+
+.organization-avatar {
+  @apply w-20 h-20 rounded-full border-4 border-sky-100 shadow-md bg-white object-cover;
+}
+.organization-highlight {
+  @apply font-semibold text-sky-800 text-lg flex items-center gap-1;
+}
+
+.repository-searchbar-container {
+  @apply bg-white/80 border border-sky-100 rounded-xl p-4 shadow-sm;
+}
+.repository-searchbar-title {
+  @apply text-base font-semibold text-gray-900;
+}
+
+.repository-summary-back-link {
+  @apply inline-flex items-center text-sky-600 hover:text-sky-800 text-sm font-medium transition-colors;
+}
+.repository-summary-link-icon {
+  @apply mr-1 text-sky-400;
+}
+.repository-summary-external-link {
+  @apply text-sky-600 hover:underline break-all text-right focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400;
+}

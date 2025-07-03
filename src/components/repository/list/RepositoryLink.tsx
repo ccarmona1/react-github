@@ -17,7 +17,7 @@ export const RepositoryLink: FC<RepositoryLinkProps> = ({
       to={`/${organizationName}/repository/${repository.name}`}
       className="block w-full"
     >
-      <div className="flex items-start w-full gap-3 transition-colors rounded-md p-2 -m-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-100 hover:bg-sky-100 hover:shadow-lg">
+      <div className="repository-link-container">
         <div className="flex-1 min-w-0">
           <h3 className="text-lg-sky">{repository.name}</h3>
           <p className="text-gray">
@@ -28,7 +28,7 @@ export const RepositoryLink: FC<RepositoryLinkProps> = ({
           <DynamicIcon
             lib="go"
             icon="GoChevronRight"
-            className="w-5 h-5 text-gray-400"
+            className="repository-link-arrow"
           />
         </div>
       </div>
